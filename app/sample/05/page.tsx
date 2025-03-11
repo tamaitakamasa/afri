@@ -3,7 +3,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import { TypeAnimation } from "react-type-animation";
-import { span } from "motion/react-client";
 
 const ReactPlayer = dynamic(() => import("react-player"), {
   ssr: false,
@@ -13,10 +12,17 @@ export default function Page() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [videoReady, setVideoReady] = useState(false);
   const [animationStarted, setAnimationStarted] = useState(false);
+  const [typingCompleted, setTypingCompleted] = useState(false);
 
   // 動画が準備完了したら状態を更新する
   const handleVideoReady = () => {
     setVideoReady(true);
+  };
+
+  // タイプライターアニメーションが完了したことを追跡
+  const handleTypingComplete = (el: HTMLElement) => {
+    setTypingCompleted(true);
+    el.classList.add("opacity-0");
   };
 
   // アニメーションシーケンスを実行する関数
@@ -54,12 +60,12 @@ export default function Page() {
     container.style.clipPath = "circle(150% at 50% 50%)";
   }, [animationStarted]);
 
-  // 動画の準備ができたらアニメーションを開始
+  // 動画の準備ができ、タイピングが完了したらアニメーションを開始
   useEffect(() => {
-    if (videoReady) {
+    if (videoReady && typingCompleted) {
       runAnimation();
     }
-  }, [videoReady, runAnimation]);
+  }, [videoReady, typingCompleted, runAnimation]);
 
   // コンポーネントのアンマウント時のクリーンアップ
   useEffect(() => {
@@ -76,7 +82,7 @@ export default function Page() {
 
   return (
     <div className="fixed inset-0 h-screen w-full">
-      <div className="absolute inset-0 flex items-center justify-center">
+      <div className="absolute inset-0 z-10 flex items-center justify-center">
         <TypeAnimation
           sequence={[
             "awaji",
@@ -85,11 +91,17 @@ export default function Page() {
             800,
             "awaji food research institute",
             800,
+            // タイピングが完了したときに実行するコールバック
+            (element: HTMLElement | null) => {
+              if (element) {
+                handleTypingComplete(element);
+              }
+            },
           ]}
           wrapper="span"
           speed={50}
-          repeat={1}
-					className="text-5xl font-bold uppercase"
+          repeat={0} // 1回だけ実行（繰り返しなし）
+          className="text-4xl font-bold uppercase transition duration-700 ease-in-out"
         />
       </div>
       <div

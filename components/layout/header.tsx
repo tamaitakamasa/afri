@@ -23,6 +23,9 @@ export default function Header() {
 						<Button asChild variant={"ghost"}>
               <Link href="/sample/04">04</Link>
             </Button>
+						<Button asChild variant={"ghost"}>
+              <Link href="/sample/05">05</Link>
+            </Button>
           </div>
         </div>
       </div>
