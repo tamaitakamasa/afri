@@ -10,14 +10,14 @@ export default function Header() {
           <h1 className="text-2xl font-bold">
             <Link href="/">Home</Link>
           </h1>
-          <div>
-            <Button asChild>
+          <div className="flex gap-2">
+            <Button asChild variant={"ghost"}>
               <Link href="/sample/01">sample 01</Link>
             </Button>
-            <Button asChild>
+            <Button asChild variant={"ghost"}>
               <Link href="/sample/02">sample 02</Link>
             </Button>
-						<Button asChild>
+						<Button asChild variant={"ghost"}>
               <Link href="/sample/03">sample 03</Link>
             </Button>
           </div>

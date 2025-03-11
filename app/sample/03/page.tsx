@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 
 const ReactPlayer = dynamic(() => import("react-player"), {
@@ -18,7 +18,7 @@ export default function Page() {
   };
 
   // アニメーションシーケンスを実行する関数
-  const runAnimation = async () => {
+  const runAnimation = useCallback(async () => {
     if (!containerRef.current || animationStarted) return;
 
     setAnimationStarted(true);
@@ -31,36 +31,43 @@ export default function Page() {
     await new Promise((resolve) => setTimeout(resolve, 800));
 
     // 1. 小さな正円がページの下（画面外）からページの中央に移動
-    container.style.transition = "clip-path 1.8s cubic-bezier(0.22, 1, 0.36, 1)";
+    container.style.transition =
+      "clip-path 1.8s cubic-bezier(0.22, 1, 0.36, 1)";
     container.style.clipPath = "circle(8% at 50% 50%)";
 
     // アニメーション完了を待機
     await new Promise((resolve) => setTimeout(resolve, 1800));
 
     // 2. 正円が拡大
-    container.style.transition = "clip-path 1.2s cubic-bezier(0.34, 1.56, 0.64, 1)";
+    container.style.transition =
+      "clip-path 1.2s cubic-bezier(0.34, 1.56, 0.64, 1)";
     container.style.clipPath = "circle(30% at 50% 50%)";
 
     // アニメーション完了を待機
     await new Promise((resolve) => setTimeout(resolve, 1200));
 
     // 3. 画面全域までマスクが滑らかに拡大
-    container.style.transition = "clip-path 1.5s cubic-bezier(0.22, 1, 0.36, 1)";
+    container.style.transition =
+      "clip-path 1.5s cubic-bezier(0.22, 1, 0.36, 1)";
     container.style.clipPath = "circle(150% at 50% 50%)";
-  };
+  }, [animationStarted]);
 
   // 動画の準備ができたらアニメーションを開始
   useEffect(() => {
     if (videoReady) {
       runAnimation();
     }
-  }, [videoReady]);
+  }, [videoReady, runAnimation]);
 
   // コンポーネントのアンマウント時のクリーンアップ
   useEffect(() => {
+    // ref の現在の値をローカル変数にコピー
+    const currentContainer = containerRef.current;
+
     return () => {
-      if (containerRef.current) {
-        containerRef.current.style.transition = "";
+      // クリーンアップ関数ではローカル変数を使用
+      if (currentContainer) {
+        currentContainer.style.transition = "";
       }
     };
   }, []);
@@ -74,7 +81,7 @@ export default function Page() {
           clipPath: "circle(5% at 50% 120%)", // 初期状態：画面外の小さな円
         }}
       >
-        <div className="aspect-video h-screen w-full pointer-events-none">
+        <div className="pointer-events-none aspect-video h-screen w-full">
           <ReactPlayer
             url="https://www.youtube.com/watch?v=TbViczxCFNI"
             width="100%"

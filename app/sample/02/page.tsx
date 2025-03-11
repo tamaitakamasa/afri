@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 
 const ReactPlayer = dynamic(() => import("react-player"), {
@@ -18,7 +18,7 @@ export default function Page() {
   };
 
   // アニメーションシーケンスを実行する関数
-  const runAnimation = async () => {
+  const runAnimation = useCallback(async () => {
     if (!containerRef.current || animationStarted) return;
 
     setAnimationStarted(true);
@@ -61,20 +61,24 @@ export default function Page() {
     container.style.transition =
       "clip-path 1.2s cubic-bezier(0.22, 1, 0.36, 1)";
     container.style.clipPath = "inset(0% 0% 0% 0% round 0px)";
-  };
+  }, [animationStarted]);
 
   // 動画の準備ができたらアニメーションを開始
   useEffect(() => {
     if (videoReady) {
       runAnimation();
     }
-  }, [videoReady]);
+  }, [videoReady, runAnimation]);
 
   // コンポーネントのアンマウント時のクリーンアップ
   useEffect(() => {
+    // ref の現在の値をローカル変数にコピー
+    const currentContainer = containerRef.current;
+
     return () => {
-      if (containerRef.current) {
-        containerRef.current.style.transition = "";
+      // クリーンアップ関数ではローカル変数を使用
+      if (currentContainer) {
+        currentContainer.style.transition = "";
       }
     };
   }, []);
