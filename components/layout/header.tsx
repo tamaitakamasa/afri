@@ -12,13 +12,16 @@ export default function Header() {
           </h1>
           <div className="flex gap-2">
             <Button asChild variant={"ghost"}>
-              <Link href="/sample/01">sample 01</Link>
+              <Link href="/sample/01">01</Link>
             </Button>
             <Button asChild variant={"ghost"}>
-              <Link href="/sample/02">sample 02</Link>
+              <Link href="/sample/02">02</Link>
             </Button>
 						<Button asChild variant={"ghost"}>
-              <Link href="/sample/03">sample 03</Link>
+              <Link href="/sample/03">03</Link>
+            </Button>
+						<Button asChild variant={"ghost"}>
+              <Link href="/sample/04">04</Link>
             </Button>
           </div>
         </div>
