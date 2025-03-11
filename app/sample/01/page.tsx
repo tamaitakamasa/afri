@@ -4,98 +4,115 @@ import dynamic from "next/dynamic";
 import { useEffect, useRef } from "react";
 
 const ReactPlayer = dynamic(() => import("react-player"), {
-	ssr: false,
+  ssr: false,
 });
-
-// import VideoPlayer from "@/components/common/video-player";
 
 interface VideoPlayerProps {
   url: string;
 }
 
-// クリップパスの定義
+// クリップパスの定義 - シンプルな円と正方形のバリエーション
 const clipPaths = {
-  start: "polygon(50% 0%, 0% 100%, 100% 100%)", // 三角形
-  middle: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)", // 長方形（全画面）
-  end: "circle(50% at 50% 50%)", // 円形
+  // 初期状態: 小さな円
+  start: "circle(25% at 50% 50%)",
+  // 中間状態1: 大きな円
+  midOne: "circle(40% at 50% 50%)",
+  // 中間状態2: 角丸の正方形
+  midTwo: "inset(20% 20% 20% 20% round 25%)",
+  // 最終状態: 完全な正方形
+  end: "inset(0% 0% 0% 0%)"
 };
 
 function VideoPlayer({ url }: VideoPlayerProps) {
-	const videoContainerRef = useRef<HTMLDivElement>(null);
+  const videoContainerRef = useRef<HTMLDivElement>(null);
 
-	useEffect(() => {
-		// コンポーネントがマウントされた後にスクロールイベントを設定
-		if (!videoContainerRef.current) return;
+  useEffect(() => {
+    // コンポーネントがマウントされた後にスクロールイベントを設定
+    if (!videoContainerRef.current) return;
 
-		const container = videoContainerRef.current;
+    const container = videoContainerRef.current;
 
-		// スクロールイベントハンドラ
-		const handleScroll = () => {
-			// ページの高さを取得
-			const pageHeight =
-				document.documentElement.scrollHeight - window.innerHeight;
-			// 現在のスクロール位置
-			const scrollPosition = window.scrollY;
-			// スクロール進捗率（0から1）
-			const progress = Math.min(scrollPosition / pageHeight, 1);
+    // スクロールイベントハンドラ
+    const handleScroll = () => {
+      // ページの高さを取得
+      const pageHeight =
+        document.documentElement.scrollHeight - window.innerHeight;
+      // 現在のスクロール位置
+      const scrollPosition = window.scrollY;
+      // スクロール進捗率（0から1）
+      const progress = Math.min(scrollPosition / pageHeight, 1);
 
-			// 最初の遷移（三角形から長方形へ）: 0-0.3のスクロール範囲
-			if (progress < 0.3) {
-				const normalizedProgress = progress / 0.3; // 0から1の範囲に正規化
-				container.style.clipPath =
-					normalizedProgress < 0.01
-						? clipPaths.start
-						: `polygon(
-							${50 - 50 * normalizedProgress}% ${0 + 0 * normalizedProgress}%,
-							${100 - 0 * normalizedProgress}% ${0 + 0 * normalizedProgress}%,
-							${100 - 0 * normalizedProgress}% ${100 - 0 * normalizedProgress}%,
-							${0 + 0 * normalizedProgress}% ${100 - 0 * normalizedProgress}%
-						)`;
-			}
-			// 二番目の遷移（長方形から円形へ）: 0.3-0.6のスクロール範囲
-			else if (progress < 0.6) {
-				const normalizedProgress = (progress - 0.3) / 0.3; // 0から1の範囲に正規化
-				const radius = 50 * normalizedProgress;
-				container.style.clipPath = `circle(${radius}% at 50% 50%)`;
-			}
-			// 最終形状（円形）: 0.6-1.0のスクロール範囲
-			else {
-				container.style.clipPath = clipPaths.end;
-			}
-		};
+      // 第1段階: 小さな円から大きな円へ (0-0.33のスクロール範囲)
+      if (progress < 0.33) {
+        const normalizedProgress = progress / 0.33; // 0から1の範囲に正規化
+        const radius = 25 + normalizedProgress * 15; // 25%から40%へ
+        container.style.clipPath = `circle(${radius}% at 50% 50%)`;
+      }
+      // 第2段階: 円から角丸正方形へ (0.33-0.66のスクロール範囲)
+      else if (progress < 0.66) {
+        const normalizedProgress = (progress - 0.33) / 0.33; // 0から1の範囲に正規化
 
-		// 初期状態を設定
-		handleScroll();
+        if (normalizedProgress < 0.5) {
+          // 前半: 円のまま最大サイズまで大きくなる
+          const radius = 40 + normalizedProgress * 10;
+          container.style.clipPath = `circle(${radius}% at 50% 50%)`;
+        } else {
+          // 後半: 円から角丸正方形へ変形（正しい変形を実装）
+          const adjustedProgress = (normalizedProgress - 0.5) * 2; // 0-1に調整
 
-		// スクロールイベントリスナーを追加
-		window.addEventListener("scroll", handleScroll);
+          // 角丸正方形に直接変化する（中間に楕円を挟まない）
+          const cornerRadius = Math.max(50 - adjustedProgress * 25, 25); // 50%から25%へ
 
-		// クリーンアップ関数
-		return () => {
-			window.removeEventListener("scroll", handleScroll);
-		};
-	}, []);
+          // 指定された比率の角丸正方形（最初は円に近い大きな角丸、徐々に角丸正方形へ）
+          const insetValue = Math.max(30 - adjustedProgress * 10, 20); // 30%から20%へ
+          container.style.clipPath = `inset(${insetValue}% ${insetValue}% ${insetValue}% ${insetValue}% round ${cornerRadius}%)`;
+        }
+      }
+      // 第3段階: 角丸正方形から完全な正方形へ (0.66-1.0のスクロール範囲)
+      else {
+        const normalizedProgress = (progress - 0.66) / 0.34; // 0から1の範囲に正規化
+        const insetValue = 20 * (1 - normalizedProgress); // 20%から0%へ
+        const roundValue = 25 * (1 - normalizedProgress); // 25%から0%へ
+        container.style.clipPath = `inset(${insetValue}% ${insetValue}% ${insetValue}% ${insetValue}% round ${roundValue}%)`;
+      }
+    };
 
-	return (
-		<>
-			<div
-				ref={videoContainerRef}
-				className="aspect-video h-screen w-full"
-				style={{ clipPath: clipPaths.start }} // 初期状態
-			>
-				<ReactPlayer
-					url={url}
-					width="100%"
-					height="100%"
-					muted={true}
-					controls={false}
-					playing={true}
-					playsinline={true}
-					loop={true}
-				/>
-			</div>
-		</>
-	);
+    // 初期状態を設定
+    container.style.clipPath = clipPaths.start;
+    handleScroll();
+
+    // スクロールイベントリスナーを追加
+    window.addEventListener("scroll", handleScroll);
+
+    // クリーンアップ関数
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  return (
+    <>
+      <div
+        ref={videoContainerRef}
+        className="aspect-video h-screen w-full"
+        style={{
+          clipPath: clipPaths.start,
+          transition: "clip-path 0.2s ease-out" // スムーズなスクロール感のための短い遷移
+        }}
+      >
+        <ReactPlayer
+          url={url}
+          width="100%"
+          height="100%"
+          muted={true}
+          controls={false}
+          playing={true}
+          playsinline={true}
+          loop={true}
+        />
+      </div>
+    </>
+  );
 }
 
 export default function Home() {
@@ -110,30 +127,28 @@ export default function Home() {
       <div className="relative z-10 mt-screen pt-[100vh]">
         <div className="mx-auto max-w-4xl space-y-32 p-8">
           <section className="rounded-lg bg-white/80 p-8 backdrop-blur-sm">
-            <h2 className="mb-4 text-3xl font-bold">セクション 1</h2>
+            <h2 className="mb-4 text-3xl font-bold">シンプルな形状変化</h2>
             <p className="text-lg">
-              スクロールすると、上部の動画のクリップ形状が変化します。
-              このデモでは、Motion Oneライブラリを使用して、スクロール位置に応じて
-              動画のクリップパスを動的に変更しています。
+              スクロールに応じて、視聴エリアが円から正方形へと変化します。
+              シンプルなデザインながら、効果的な視覚体験を提供します。
             </p>
           </section>
 
           <section className="rounded-lg bg-white/80 p-8 backdrop-blur-sm">
-            <h2 className="mb-4 text-3xl font-bold">セクション 2</h2>
+            <h2 className="mb-4 text-3xl font-bold">段階的な変化</h2>
             <p className="text-lg">
-              さらにスクロールすると、クリップパスがさらに変化します。
-              このようなエフェクトは、ウェブサイトに視覚的な興味を追加し、
-              ユーザーエクスペリエンスを向上させることができます。
+              最初は小さな円から始まり、大きな円に拡大。
+              その後、角丸のある正方形へと変化し、最終的には
+              画面全体を覆う完全な正方形へと変わります。
             </p>
           </section>
 
           <section className="rounded-lg bg-white/80 p-8 backdrop-blur-sm">
-            <h2 className="mb-4 text-3xl font-bold">セクション 3</h2>
+            <h2 className="mb-4 text-3xl font-bold">デザインの洗練</h2>
             <p className="text-lg">
-              Motion Oneは軽量で高性能なアニメーションライブラリで、
-              スクロールベースのアニメーションを簡単に実装できます。
-              このデモでは、スクロール位置に基づいて複数のクリップパスの間を
-              スムーズに遷移させています。
+              シンプルな形状の変化だからこそ、洗練された印象を与えます。
+              ミニマルなアプローチがモダンなウェブデザインにマッチし、
+              コンテンツの魅力を引き立てます。
             </p>
           </section>
         </div>

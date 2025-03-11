@@ -1,64 +1,102 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import VideoPlayer from "@/components/common/video-player";
+import { useEffect, useRef, useState } from "react";
+import dynamic from "next/dynamic";
+
+const ReactPlayer = dynamic(() => import("react-player"), {
+  ssr: false,
+});
 
 export default function Page() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [videoReady, setVideoReady] = useState(false);
+  const [animationStarted, setAnimationStarted] = useState(false);
 
-  useEffect(() => {
-    if (!containerRef.current) return;
+  // 動画が準備完了したら状態を更新する
+  const handleVideoReady = () => {
+    setVideoReady(true);
+  };
 
+  // アニメーションシーケンスを実行する関数
+  const runAnimation = async () => {
+    if (!containerRef.current || animationStarted) return;
+
+    setAnimationStarted(true);
     const container = containerRef.current;
 
-    // アニメーションシーケンスを設定
-    const runAnimation = async () => {
-      // 初期状態を確保
-      container.style.clipPath = "circle(5% at 50% 90%)";
+    // 初期状態：画面外の横長の角丸長方形
+    container.style.clipPath = "inset(100% 20% 0% 20% round 16px)";
 
-      // 少し待機
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+    // コンテナを表示
+    container.style.opacity = "1";
 
-      // 1. 小さな正円がページの下から中央に移動
-      container.style.transition = "clip-path 2s ease-out";
-      container.style.clipPath = "circle(10% at 50% 50%)";
+    // 少し待機
+    await new Promise((resolve) => setTimeout(resolve, 500));
 
-      // アニメーション完了を待機
-      await new Promise((resolve) => setTimeout(resolve, 2000));
+    // 1. 横長の角丸長方形がページの下から中央に移動
+    container.style.transition = "clip-path 1.6s cubic-bezier(0.33, 1, 0.68, 1)";
+    container.style.clipPath = "inset(40% 20% 40% 20% round 16px)";
 
-      // 2. 正円が正方形に変形しながら拡大
-      container.style.transition = "clip-path 1.8s ease-in-out";
-      container.style.clipPath =
-        "polygon(40% 40%, 60% 40%, 60% 60%, 40% 60%)";
+    // アニメーション完了を待機
+    await new Promise((resolve) => setTimeout(resolve, 1600));
 
-      // アニメーション完了を待機
-      await new Promise((resolve) => setTimeout(resolve, 1800));
+    // 2. 中央で長方形が拡大
+    container.style.transition = "clip-path 1.4s cubic-bezier(0.65, 0, 0.35, 1)";
+    container.style.clipPath = "inset(25% 10% 25% 10% round 24px)";
 
-      // 3. 画面全域までマスクが拡大
-      container.style.transition = "clip-path 1s ease-in-out";
-      container.style.clipPath =
-        "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)";
-    };
+    // アニメーション完了を待機
+    await new Promise((resolve) => setTimeout(resolve, 1400));
 
-    // アニメーションを実行
-    runAnimation();
+    // 3. さらに拡大して画面の大部分を覆う
+    container.style.transition = "clip-path 1.5s cubic-bezier(0.34, 1.56, 0.64, 1)";
+    container.style.clipPath = "inset(10% 5% 10% 5% round 32px)";
 
-    // クリーンアップ関数
+    // アニメーション完了を待機
+    await new Promise((resolve) => setTimeout(resolve, 1500));
+
+    // 4. 最終的に画面全体を覆う
+    container.style.transition = "clip-path 1.2s cubic-bezier(0.22, 1, 0.36, 1)";
+    container.style.clipPath = "inset(0% 0% 0% 0% round 0px)";
+  };
+
+  // 動画の準備ができたらアニメーションを開始
+  useEffect(() => {
+    if (videoReady) {
+      runAnimation();
+    }
+  }, [videoReady]);
+
+  // コンポーネントのアンマウント時のクリーンアップ
+  useEffect(() => {
     return () => {
-      // アニメーションのクリーンアップが必要な場合はここに記述
+      if (containerRef.current) {
+        containerRef.current.style.transition = "";
+      }
     };
   }, []);
 
   return (
-    <div className="fixed inset-0 h-screen w-full">
+    <div className="fixed inset-0 h-screen w-full bg-white">
       <div
         ref={containerRef}
-        className="h-full w-full"
+        className="h-full w-full opacity-0"
         style={{
-          clipPath: "circle(5% at 50% 90%)", // 初期状態：ページ下部の小さな円
+          clipPath: "inset(100% 20% 0% 20% round 16px)", // 初期状態：画面外の横長角丸長方形
         }}
       >
-        <VideoPlayer url="https://www.youtube.com/watch?v=9bZkp7q19f0" />
+        <div className="aspect-video h-screen w-full">
+          <ReactPlayer
+            url="https://www.youtube.com/watch?v=9bZkp7q19f0"
+            width="100%"
+            height="100%"
+            muted={true}
+            controls={false}
+            playing={true}
+            playsinline={true}
+            loop={true}
+            onReady={handleVideoReady}
+          />
+        </div>
       </div>
     </div>
   );

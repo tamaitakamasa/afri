@@ -17,6 +17,9 @@ export default function Header() {
             <Button asChild>
               <Link href="/sample/02">sample 02</Link>
             </Button>
+						<Button asChild>
+              <Link href="/sample/03">sample 03</Link>
+            </Button>
           </div>
         </div>
       </div>
