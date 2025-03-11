@@ -11,74 +11,63 @@ interface VideoPlayerProps {
   url: string;
 }
 
-// クリップパスの定義 - シンプルな円と正方形のバリエーション
-const clipPaths = {
-  // 初期状態: 小さな円
-  start: "circle(25% at 50% 50%)",
-  // 中間状態1: 大きな円
-  midOne: "circle(40% at 50% 50%)",
-  // 中間状態2: 角丸の正方形
-  midTwo: "inset(20% 20% 20% 20% round 25%)",
-  // 最終状態: 完全な正方形
-  end: "inset(0% 0% 0% 0%)"
-};
-
 function VideoPlayer({ url }: VideoPlayerProps) {
   const videoContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // コンポーネントがマウントされた後にスクロールイベントを設定
     if (!videoContainerRef.current) return;
-
     const container = videoContainerRef.current;
 
-    // スクロールイベントハンドラ
     const handleScroll = () => {
-      // ページの高さを取得
-      const pageHeight =
-        document.documentElement.scrollHeight - window.innerHeight;
-      // 現在のスクロール位置
+      const pageHeight = document.documentElement.scrollHeight - window.innerHeight;
       const scrollPosition = window.scrollY;
-      // スクロール進捗率（0から1）
       const progress = Math.min(scrollPosition / pageHeight, 1);
 
       // 第1段階: 小さな円から大きな円へ (0-0.33のスクロール範囲)
       if (progress < 0.33) {
-        const normalizedProgress = progress / 0.33; // 0から1の範囲に正規化
+        const normalizedProgress = progress / 0.33;
         const radius = 25 + normalizedProgress * 15; // 25%から40%へ
         container.style.clipPath = `circle(${radius}% at 50% 50%)`;
       }
       // 第2段階: 円から角丸正方形へ (0.33-0.66のスクロール範囲)
       else if (progress < 0.66) {
-        const normalizedProgress = (progress - 0.33) / 0.33; // 0から1の範囲に正規化
+        const normalizedProgress = (progress - 0.33) / 0.33;
 
-        if (normalizedProgress < 0.5) {
-          // 前半: 円のまま最大サイズまで大きくなる
-          const radius = 40 + normalizedProgress * 10;
-          container.style.clipPath = `circle(${radius}% at 50% 50%)`;
+        // 新しいアプローチ: 多角形を使用して円から正方形への変形を制御
+        // ここでは8つの点で作る八角形を使って円と正方形の中間形状を作る
+
+        if (normalizedProgress <= 0.5) {
+          // 円からスムーズに八角形へ
+          const circleRadius = 40 + (normalizedProgress * 2) * 10; // 40%から50%へ
+          container.style.clipPath = `circle(${circleRadius}% at 50% 50%)`;
         } else {
-          // 後半: 円から角丸正方形へ変形（正しい変形を実装）
-          const adjustedProgress = (normalizedProgress - 0.5) * 2; // 0-1に調整
+          // 八角形から角丸正方形へ
+          // 正規化された進行度（0.5-1.0を0-1に）
+          const p = (normalizedProgress - 0.5) * 2;
 
-          // 角丸正方形に直接変化する（中間に楕円を挟まない）
-          const cornerRadius = Math.max(50 - adjustedProgress * 25, 25); // 50%から25%へ
+          // 角丸の設定 (徐々に小さくなる)
+          const cornerSize = Math.max(20 * (1 - p) + 10, 10); // 20%から10%へ
 
-          // 指定された比率の角丸正方形（最初は円に近い大きな角丸、徐々に角丸正方形へ）
-          const insetValue = Math.max(30 - adjustedProgress * 10, 20); // 30%から20%へ
-          container.style.clipPath = `inset(${insetValue}% ${insetValue}% ${insetValue}% ${insetValue}% round ${cornerRadius}%)`;
+          // インセット値を計算（徐々に小さくなる）
+          const insetSize = Math.max(20 * (1 - p) + 5, 5); // 20%から5%へ
+
+          // 角丸正方形へ直接変形（横長になるのを防ぐ）
+          container.style.clipPath = `inset(${insetSize}% ${insetSize}% ${insetSize}% ${insetSize}% round ${cornerSize}px)`;
         }
       }
       // 第3段階: 角丸正方形から完全な正方形へ (0.66-1.0のスクロール範囲)
       else {
-        const normalizedProgress = (progress - 0.66) / 0.34; // 0から1の範囲に正規化
-        const insetValue = 20 * (1 - normalizedProgress); // 20%から0%へ
-        const roundValue = 25 * (1 - normalizedProgress); // 25%から0%へ
-        container.style.clipPath = `inset(${insetValue}% ${insetValue}% ${insetValue}% ${insetValue}% round ${roundValue}%)`;
+        const normalizedProgress = (progress - 0.66) / 0.34;
+        // 初期値を小さく設定して、正方形に近づけるところから始める
+        const insetValue = 5 * (1 - normalizedProgress); // 5%から0%へ
+        const cornerSize = 10 * (1 - normalizedProgress); // 10pxから0pxへ
+
+        container.style.clipPath = `inset(${insetValue}% ${insetValue}% ${insetValue}% ${insetValue}% round ${cornerSize}px)`;
       }
     };
 
     // 初期状態を設定
-    container.style.clipPath = clipPaths.start;
+    container.style.clipPath = "circle(25% at 50% 50%)";
     handleScroll();
 
     // スクロールイベントリスナーを追加
@@ -96,8 +85,8 @@ function VideoPlayer({ url }: VideoPlayerProps) {
         ref={videoContainerRef}
         className="aspect-video h-screen w-full"
         style={{
-          clipPath: clipPaths.start,
-          transition: "clip-path 0.2s ease-out" // スムーズなスクロール感のための短い遷移
+          clipPath: "circle(25% at 50% 50%)",
+          transition: "clip-path 0.1s ease-out" // より短い遷移時間で滑らかさを保つ
         }}
       >
         <ReactPlayer
@@ -120,7 +109,7 @@ export default function Home() {
     <div className="relative min-h-[300vh]">
       {/* 固定位置の動画プレーヤー */}
       <div className="fixed inset-0 h-screen w-full">
-        <VideoPlayer url="https://www.youtube.com/watch?v=4MgLFWefpbk" />
+        <VideoPlayer url="https://www.youtube.com/watch?v=TbViczxCFNI" />
       </div>
 
       {/* スクロール用のコンテンツ */}

@@ -74,9 +74,9 @@ export default function Page() {
           clipPath: "circle(5% at 50% 120%)", // 初期状態：画面外の小さな円
         }}
       >
-        <div className="aspect-video h-screen w-full">
+        <div className="aspect-video h-screen w-full pointer-events-none">
           <ReactPlayer
-            url="https://www.youtube.com/watch?v=9bZkp7q19f0"
+            url="https://www.youtube.com/watch?v=TbViczxCFNI"
             width="100%"
             height="100%"
             muted={true}

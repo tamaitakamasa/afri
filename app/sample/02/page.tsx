@@ -34,28 +34,32 @@ export default function Page() {
     await new Promise((resolve) => setTimeout(resolve, 500));
 
     // 1. 横長の角丸長方形がページの下から中央に移動
-    container.style.transition = "clip-path 1.6s cubic-bezier(0.33, 1, 0.68, 1)";
+    container.style.transition =
+      "clip-path 1.6s cubic-bezier(0.33, 1, 0.68, 1)";
     container.style.clipPath = "inset(40% 20% 40% 20% round 16px)";
 
     // アニメーション完了を待機
     await new Promise((resolve) => setTimeout(resolve, 1600));
 
     // 2. 中央で長方形が拡大
-    container.style.transition = "clip-path 1.4s cubic-bezier(0.65, 0, 0.35, 1)";
+    container.style.transition =
+      "clip-path 1s cubic-bezier(0.65, 0, 0.35, 1)";
     container.style.clipPath = "inset(25% 10% 25% 10% round 24px)";
 
     // アニメーション完了を待機
-    await new Promise((resolve) => setTimeout(resolve, 1400));
+    await new Promise((resolve) => setTimeout(resolve, 1000));
 
     // 3. さらに拡大して画面の大部分を覆う
-    container.style.transition = "clip-path 1.5s cubic-bezier(0.34, 1.56, 0.64, 1)";
+    container.style.transition =
+      "clip-path 1.2s cubic-bezier(0.34, 1.56, 0.64, 1)";
     container.style.clipPath = "inset(10% 5% 10% 5% round 32px)";
 
     // アニメーション完了を待機
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    await new Promise((resolve) => setTimeout(resolve, 1200));
 
     // 4. 最終的に画面全体を覆う
-    container.style.transition = "clip-path 1.2s cubic-bezier(0.22, 1, 0.36, 1)";
+    container.style.transition =
+      "clip-path 1.2s cubic-bezier(0.22, 1, 0.36, 1)";
     container.style.clipPath = "inset(0% 0% 0% 0% round 0px)";
   };
 
@@ -76,7 +80,7 @@ export default function Page() {
   }, []);
 
   return (
-    <div className="fixed inset-0 h-screen w-full bg-white">
+    <div className="pointer-events-none fixed inset-0 h-screen w-full bg-white">
       <div
         ref={containerRef}
         className="h-full w-full opacity-0"
@@ -86,7 +90,7 @@ export default function Page() {
       >
         <div className="aspect-video h-screen w-full">
           <ReactPlayer
-            url="https://www.youtube.com/watch?v=9bZkp7q19f0"
+            url="https://www.youtube.com/watch?v=TbViczxCFNI"
             width="100%"
             height="100%"
             muted={true}
