@@ -1,22 +1,25 @@
 // "use client";
 
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import Typewriter from "@/components/common/typewriter";
 
-export const runtime = "edge";
 
 export default function Home() {
   return (
-    <div className="relative h-dvh">
-      <div className="mx-auto max-w-2xl pt-40">
-        <div className="flex flex-col items-center justify-center space-y-4">
-          <Button asChild>
-            <Link href="/sample/01">sample 01</Link>
-          </Button>
-          <Button asChild>
-            <Link href="/sample/02">sample 02</Link>
-          </Button>
-        </div>
+    <div className="fixed inset-0 h-screen w-full">
+      <div className="flex h-full w-full flex-col items-center justify-center">
+        <h1 className="text-6xl font-bold">
+					<Typewriter
+            sequences={[
+							"awaji",
+              800,
+              "awaji food research",
+              800,
+              "awaji food research institute",
+              800,
+            ]}
+            className="uppercase"
+          />
+        </h1>
       </div>
     </div>
   );
