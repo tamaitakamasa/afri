@@ -5,7 +5,7 @@ const TEAM_MEMBERS = [
     name: "富田 祐介",
     en: "yusuke tomita",
     company: "株式会社シマトワークス",
-    link: "#",
+    link: "https://note.com/foodtrail/n/n488a9300abbf",
   },
   {
     name: "宗和 まりも",

@@ -4,3 +4,5 @@
 export const SITE_URL = "";
 export const SITE_TITLE = "";
 export const SITE_DESCRIPTION = "";
+export const NOTE_URL = "https://note.com/foodtrail";
+export const NOTE_API_BASE_URL = 'https://note.com/api/v2/creators/foodtrail/';
