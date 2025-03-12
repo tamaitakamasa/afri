@@ -35,9 +35,16 @@ export default async function NoteList() {
               />
             </a>
           </figure>
-					<div>
-						<p className="text-sm">{post.body}</p>
-					</div>
+          <div>
+            <p className="text-sm">{post.body}</p>
+          </div>
+          <div className="flex gap-2">
+            {post.hashtags.map((tag, index) => (
+              <span key={index} className="text-sm">
+                {tag.hashtag.name}
+              </span>
+            ))}
+          </div>
         </div>
       ))}
     </div>
