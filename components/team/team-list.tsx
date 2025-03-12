@@ -23,17 +23,10 @@ const TEAM_MEMBERS = [
 
 export default function TeamList() {
   return (
-    <div className="container mx-auto px-4 py-8">
-      <div className="relative flex">
-        <div className="min-w-1/4 sticky top-0 h-fit py-24">
-          <h2 className="text-2xl font-semibold">TEAMS</h2>
-        </div>
-        <div className="flex w-full flex-col gap-4">
-          {TEAM_MEMBERS.map((member, index) => (
-            <TeamCard key={index} {...member} />
-          ))}
-        </div>
-      </div>
+    <div className="flex w-full flex-col gap-4">
+      {TEAM_MEMBERS.map((member, index) => (
+        <TeamCard key={index} {...member} />
+      ))}
     </div>
   );
 }

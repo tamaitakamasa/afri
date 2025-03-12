@@ -1,17 +1,19 @@
-// "use client";
-
+import AcademySection from "@/components/home/academy-section";
+import FoodTrailSection from "@/components/home/food-trail-section";
 import Hero from "@/components/home/hero";
-import NoteList from "@/components/note/note-list";
-import TeamList from "@/components/team/team-list";
-// import { TypeAnimation } from "react-type-animation";
+import JoinSection from "@/components/home/join-section";
+import TeamsSection from "@/components/home/team-section";
+
 
 
 export default function Home() {
   return (
-    <div className="h-screen w-full">
+    <div className="w-full">
       <Hero />
-			<TeamList />
-			<NoteList />
+      <TeamsSection title="TEAMS" />
+      <FoodTrailSection title="AWAJI FOOD TRAIL" />
+			<AcademySection title="ACADEMY" />
+			<JoinSection title="JOIN US" />
     </div>
   );
 }
