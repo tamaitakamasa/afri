@@ -12,4 +12,5 @@ export const NAVI_ITEMS = [
 	{ label: "Food Trail", href: "/" },
 	{ label: "Academy", href: "/" },
 	{ label: "Join Us", href: "/" },
+	{ label: "Contact", href: "/" },
 ];
