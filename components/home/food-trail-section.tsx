@@ -8,7 +8,7 @@ interface FoodTrailSectionProps {
 
 export default function FoodTrailSection({ title }: FoodTrailSectionProps) {
   return (
-    <Section>
+    <Section className="bg-gray-50">
       <Section.Left title={title} />
       <Section.Right>
         <NoteList />

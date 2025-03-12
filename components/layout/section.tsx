@@ -31,10 +31,11 @@ export function Section({
   children,
 }: SectionProps) {
   return (
-    <section className={cn("container mx-auto px-4", className)}>
-      {/* 2カラムレイアウト */}
-      <div className={cn("relative flex w-full", gap)}>
-        {children}
+    <section className={cn("", className)}>
+      <div className="container mx-auto px-4">
+        <div className={cn("relative flex w-full", gap)}>
+          {children}
+        </div>
       </div>
     </section>
   );
