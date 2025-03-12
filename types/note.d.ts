@@ -5,6 +5,7 @@ export interface NoteArticle {
   eyecatch: string;
 	noteUrl: string;
   hashtags: NoteHashtag[];
+	body: string;
 }
 
 export interface NoteHashtag {

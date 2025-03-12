@@ -5,12 +5,21 @@ import Image from "next/image";
 export default async function NoteList() {
   const noteData = await getAllPosts();
   const posts: NoteArticle[] = noteData.data.contents;
-  // console.log(posts);
+  console.log(posts);
 
   return (
-    <div className="flex w-full flex-col gap-4">
+    <div className="flex w-full flex-col gap-12">
       {posts.map((post) => (
-        <div key={post.id}>
+        <div key={post.id} className="flex flex-col gap-4">
+          <h2 className="font-bold">
+            <a
+              href={post.noteUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {post.name}
+            </a>
+          </h2>
           <figure className="relative aspect-square max-w-[400px]">
             <a
               href={post.noteUrl}
@@ -26,15 +35,9 @@ export default async function NoteList() {
               />
             </a>
           </figure>
-          <h2>
-            <a
-              href={post.noteUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {post.name}
-            </a>
-          </h2>
+					<div>
+						<p className="text-sm">{post.body}</p>
+					</div>
         </div>
       ))}
     </div>
