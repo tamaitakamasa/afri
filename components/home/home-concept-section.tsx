@@ -2,16 +2,16 @@ import Heading from "../common/heading";
 
 export default function HomeConceptSection() {
   return (
-    <section className="container-xl px-8 pt-30">
+    <section className="container-xl py-30 px-8">
       <Heading title="Concept" className="text-center" />
-      <div className="gap-15 relative flex mt-30">
-        <div className="sticky top-0 h-fit w-1/3">
-          <h3 className="text-xl font-medium">
+      <div className="relative mt-10 flex gap-12">
+        <div className="sticky top-0 h-fit w-5/12">
+          <h3 className="py-20 text-[22px] font-medium">
             「美味しい」の解像度をあげる
           </h3>
         </div>
-        <div className="w-2/3">
-          <div className="flex flex-col gap-10 leading-[1.8] tracking-wider">
+        <div className="w-7/12">
+          <div className="flex flex-col gap-10 py-20 leading-[1.8] tracking-wider">
             <p>
               Awaji Food Research
               Instituteは、あらゆる視点で「食」を研究、アーカイブし、50年先の食文化の創出に向けて学ぶ場を提供し、行動し続ける場です。
@@ -28,14 +28,14 @@ export default function HomeConceptSection() {
           </div>
         </div>
       </div>
-      <div className="gap-15 relative flex mt-30">
-        <div className="sticky top-0 h-fit w-1/3">
-          <h3 className="text-xl font-medium">
+      <div className="gap-15 relative mt-10 flex">
+        <div className="sticky top-0 h-fit w-5/12">
+          <h3 className="py-20 text-[22px] font-medium">
             50年先の食文化をつくる
           </h3>
         </div>
-        <div className="w-2/3">
-          <div className="flex flex-col gap-10 leading-[1.8] tracking-wider">
+        <div className="w-7/12">
+          <div className="flex flex-col gap-10 py-20 leading-[1.8] tracking-wider">
             <p>
               20年で地域は大きく変わります。淡路島もこの20年でそのイメージも環境も大きく変化してきました。では次の20年、淡路島に「食」を通してどのような変化をもたらすことができるのでしょうか。さらにいうなら50年先にどのような「食文化」をつくることができるのでしょうか。文化を形成するまでに、行動、習慣、文化という流れがあるとして、まずその行動をおこせる場をここにつくっていきます。私たちだけでは難しいことばかりです。この場を通して時間をかけて、一緒に「美味しい」の解像度を高め合える仲間を作っていけたらと思います。たくさんの「美味しい」を感じられる未来へ。
             </p>
