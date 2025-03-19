@@ -13,10 +13,10 @@ export default function HomeConceptSection() {
   }, [isInView]);
 
   return (
-    <section className="container-xl py-30 px-8">
+    <section className="container-xl py-30 px-8 relative">
       <motion.div
         id="sample"
-        className="w-100 aspect-square"
+        className="w-100 aspect-square absolute top-0 left-0"
         animate={{
           backgroundColor: isInView ? "#93c5fd" : "#fde68a",
         }}
