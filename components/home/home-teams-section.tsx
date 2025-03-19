@@ -1,18 +1,17 @@
-import React from "react";
-import { Section } from "../layout/section";
 import TeamList from "../team/team-list";
+import Heading from "../common/heading";
 
-interface TeamsSectionProps {
-	title?: string;
-}
-
-export default function HomeTeamsSection({ title }: TeamsSectionProps) {
+export default function HomeTeamsSection() {
   return (
-    <Section>
-      <Section.Left title={title} />
-      <Section.Right>
-        <TeamList />
-      </Section.Right>
-    </Section>
+    <section className="mx-auto max-w-[1000px]">
+      <div className="relative flex w-full gap-40">
+        <div className="sticky top-0 h-fit py-20">
+          <Heading title="Team" />
+        </div>
+        <div className="py-20">
+          <TeamList />
+        </div>
+      </div>
+    </section>
   );
 }
