@@ -1,5 +1,5 @@
 import { getAllPosts } from "@/lib/note";
-import { cn } from "@/lib/utils";
+import { cn, formatDateToYYYYMMDD } from "@/lib/utils";
 import { NoteArticle } from "@/types/note";
 import Image from "next/image";
 
@@ -16,8 +16,7 @@ export default async function NoteList({ className }: NoteListProps) {
     <div className={cn(className)}>
       <div className="grid grid-cols-2 gap-5">
         {posts.map((post) => (
-          <div key={post.id} className="flex flex-col gap-4">
-
+          <div key={post.id} className="">
             <figure className="relative aspect-[460/345]">
               <a
                 href={post.noteUrl}
@@ -33,21 +32,28 @@ export default async function NoteList({ className }: NoteListProps) {
                 />
               </a>
             </figure>
-						<span className="font-bold text-xs text-gray-500">カテゴリー</span>
-            <h2 className="text-xl tracking-wider line-clamp-2">
-              <a
-                href={post.noteUrl}
-                target="_blank"
-              >
-                {post.name}
-              </a>
-            </h2>
-            <div className="flex gap-2 flex-wrap">
-              {post.hashtags.map((tag, index) => (
-                <span key={index} className="text-xs">
-                  {tag.hashtag.name}
-                </span>
-              ))}
+            <div className="px-12 py-8 flex flex-col gap-4">
+              <span className="text-xs font-bold text-gray-500">
+                カテゴリー
+              </span>
+              <h2 className="line-clamp-2 text-xl tracking-wider">
+                <a href={post.noteUrl} target="_blank">
+                  {post.name}
+                </a>
+              </h2>
+              <div className="mt-5 flex flex-wrap gap-1.5">
+                {post.hashtags.map((tag, index) => (
+                  <span
+                    key={index}
+                    className="text-xs tracking-wider"
+                  >
+                    {tag.hashtag.name}
+                  </span>
+                ))}
+              </div>
+              <time className="font-en font-bold tracking-[0.2em]">
+                {formatDateToYYYYMMDD(post.publishAt)}
+              </time>
             </div>
           </div>
         ))}
