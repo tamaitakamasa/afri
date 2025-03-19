@@ -10,7 +10,7 @@ export default function Heading({ title, className }: HeadingProps) {
     <h2
       className={cn(
         className,
-        "font-en text-2xl font-bold uppercase tracking-widest",
+        "font-en text-3xl font-bold uppercase tracking-widest",
       )}
     >
       {title}
