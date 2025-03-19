@@ -1,9 +1,29 @@
+"use client";
+
+import { motion, useInView } from "motion/react";
 import Heading from "../common/heading";
+import { useEffect, useRef } from "react";
 
 export default function HomeConceptSection() {
+  const ref = useRef(null);
+  const isInView = useInView(ref);
+
+  useEffect(() => {
+    console.log("Element is in view: ", isInView);
+  }, [isInView]);
+
   return (
     <section className="container-xl py-30 px-8">
+      <motion.div
+        id="sample"
+        className="w-100 aspect-square"
+        animate={{
+          backgroundColor: isInView ? "#93c5fd" : "#fde68a",
+        }}
+        transition={{ duration: 0.5 }}
+      ></motion.div>
       <Heading title="Concept" className="text-center" />
+      {/* 「美味しい」の解像度をあげる */}
       <div className="relative mt-10 flex gap-12">
         <div className="sticky top-0 h-fit w-5/12">
           <h3 className="py-20 text-[22px] font-medium">
@@ -28,7 +48,11 @@ export default function HomeConceptSection() {
           </div>
         </div>
       </div>
-      <div className="gap-15 relative mt-10 flex">
+      {/* 50年先の食文化をつくる */}
+      <div
+        className="gap-15 relative mt-10 flex"
+        ref={ref}
+      >
         <div className="sticky top-0 h-fit w-5/12">
           <h3 className="py-20 text-[22px] font-medium">
             50年先の食文化をつくる

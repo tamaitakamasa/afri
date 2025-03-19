@@ -10,7 +10,7 @@ interface NoteListProps {
 export default async function NoteList({ className }: NoteListProps) {
   const noteData = await getAllPosts();
   const posts: NoteArticle[] = noteData.data.contents;
-  console.log(posts);
+  // console.log(posts);
 
   return (
     <div className={cn(className)}>
