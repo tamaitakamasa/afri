@@ -14,7 +14,7 @@ export default function TeamCard({
   return (
     <div>
       <div className="flex gap-4">
-        <div className="aspect-square w-full max-w-[400px] bg-gray-100"></div>
+        <div className="aspect-square w-full max-w-[400px] bg-gray-200"></div>
         <div className="flex flex-col justify-center gap-4 p-4">
           <hgroup className="flex flex-col gap-8">
             {company && (
