@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Urbanist } from "next/font/google";
+import { Geist_Mono, Urbanist, Noto_Sans_JP } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
@@ -7,9 +7,11 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "@/constants/site";
 
 
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const notoSansJP = Noto_Sans_JP({
+  variable: "--font-noto-sans-jp",
   subsets: ["latin"],
+  display: "swap",
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 });
 
 const geistMono = Geist_Mono({
@@ -37,7 +39,7 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${urbanist.variable} antialiased`}
+        className={`${notoSansJP.variable} ${geistMono.variable} ${urbanist.variable} antialiased`}
       >
 				<Header />
         {children}

@@ -24,7 +24,7 @@ export default function TeamCard({
             )}
             <h2 className="flex flex-col gap-1">
               <span className="text-xl">{name}</span>
-              <span className="text-sm font-bold text-gray-500 font-en uppercase">
+              <span className="font-en text-sm font-bold uppercase tracking-[0.2em] text-gray-400">
                 {en}
               </span>
             </h2>
@@ -32,7 +32,7 @@ export default function TeamCard({
         </div>
       </div>
       <div className="mt-8">
-        <p className="whitespace-pre-wrap">{description}</p>
+        <p className="whitespace-pre-wrap tracking-wider text-sm leading-6">{description}</p>
       </div>
     </div>
   );

@@ -1,10 +1,10 @@
 import TeamCard from "./team-card";
 
 interface TeamMember {
-	name: string;
-	en: string;
-	company?: string;
-	description: string;
+  name: string;
+  en: string;
+  company?: string;
+  description: string;
 }
 
 const TEAM_MEMBERS: TeamMember[] = [
@@ -32,7 +32,7 @@ const TEAM_MEMBERS: TeamMember[] = [
 
 export default function TeamList() {
   return (
-    <div className="flex w-full flex-col gap-4">
+    <div className="flex flex-col gap-40">
       {TEAM_MEMBERS.map((member, index) => (
         <TeamCard key={index} {...member} />
       ))}
