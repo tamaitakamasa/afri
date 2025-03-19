@@ -5,14 +5,24 @@ import "./globals.css";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import { SITE_DESCRIPTION, SITE_TITLE } from "@/constants/site";
-
-
+import FloatingMenu from "@/components/layout/floating-menu";
+import { ThemeProvider } from "next-themes";
 
 const notoSansJP = Noto_Sans_JP({
   variable: "--font-noto-sans-jp",
   subsets: ["latin"],
   display: "swap",
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  weight: [
+    "100",
+    "200",
+    "300",
+    "400",
+    "500",
+    "600",
+    "700",
+    "800",
+    "900",
+  ],
 });
 
 const geistMono = Geist_Mono({
@@ -24,7 +34,17 @@ const urbanist = Urbanist({
   variable: "--font-urbanist",
   subsets: ["latin"],
   display: "swap",
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  weight: [
+    "100",
+    "200",
+    "300",
+    "400",
+    "500",
+    "600",
+    "700",
+    "800",
+    "900",
+  ],
 });
 
 export const metadata: Metadata = {
@@ -42,9 +62,16 @@ export default function RootLayout({
       <body
         className={`${notoSansJP.variable} ${geistMono.variable} ${urbanist.variable} antialiased`}
       >
-				<Header />
-        {children}
-				<Footer />
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+        >
+          <Header />
+          {children}
+          <FloatingMenu />
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );
