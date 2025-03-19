@@ -6,7 +6,7 @@ interface TeamsSectionProps {
 	title?: string;
 }
 
-export default function TeamsSection({ title }: TeamsSectionProps) {
+export default function HomeTeamsSection({ title }: TeamsSectionProps) {
   return (
     <Section>
       <Section.Left title={title} />
