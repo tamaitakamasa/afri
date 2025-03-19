@@ -1,3 +1,4 @@
+// components/home/join-section.tsx
 import React from "react";
 import { Section } from "../layout/section";
 

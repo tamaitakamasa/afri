@@ -1,3 +1,4 @@
+// components/home/academy-section.tsx
 import React from "react";
 import { Section } from "../layout/section";
 

@@ -1,3 +1,4 @@
+// app/sample/00/page.tsx
 import AcademySection from "@/components/home/academy-section";
 import FoodTrailSection from "@/components/home/food-trail-section";
 import Hero from "@/components/home/hero";

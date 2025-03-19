@@ -1,3 +1,4 @@
+// components/home/home-teams-section.tsx
 import TeamList from "../team/team-list";
 import Heading from "../common/heading";
 

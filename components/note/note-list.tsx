@@ -1,3 +1,4 @@
+// components/note/note-list.tsx
 import { getAllPosts } from "@/lib/note";
 import { cn, formatDateToYYYYMMDD } from "@/lib/utils";
 import { NoteArticle } from "@/types/note";

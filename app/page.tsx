@@ -1,3 +1,4 @@
+// app/page.tsx
 // import AcademySection from "@/components/home/academy-section";
 // import FoodTrailSection from "@/components/home/food-trail-section";
 import AcademyJoinSection from "@/components/home/academy-join-section";

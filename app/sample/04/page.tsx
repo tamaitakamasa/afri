@@ -1,3 +1,4 @@
+// app/sample/04/page.tsx
 "use client";
 
 import Typewriter from "@/components/common/typewriter";

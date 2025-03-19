@@ -1,3 +1,4 @@
+// components/team/team-card.tsx
 interface TeamCardProps {
   name: string;
   en: string;

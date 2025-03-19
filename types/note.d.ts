@@ -1,3 +1,4 @@
+// types/note.d.ts
 export interface NoteArticle {
   id: number;
   name: string;

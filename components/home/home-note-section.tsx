@@ -1,3 +1,4 @@
+// components/home/home-note-section.tsx
 import Heading from "../common/heading";
 import NoteList from "../note/note-list";
 import { Button } from "../ui/button";

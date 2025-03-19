@@ -1,3 +1,4 @@
+// app/sample/02/page.tsx
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";

@@ -1,3 +1,4 @@
+// components/home/home-field-section.tsx
 export default function HomeFieldSection() {
   return (
     <section className="w-full bg-red-100 pt-40">

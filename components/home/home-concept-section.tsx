@@ -1,3 +1,4 @@
+// components/home/home-concept-section.tsx
 "use client";
 
 import { motion, useInView } from "motion/react";

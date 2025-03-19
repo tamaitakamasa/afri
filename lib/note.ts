@@ -1,3 +1,4 @@
+// lib/note.ts
 import { NOTE_API_BASE_URL } from "@/constants/site";
 import { NotesData } from "@/types/note";
 

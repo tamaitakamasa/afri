@@ -1,3 +1,4 @@
+// components/team/team-list.tsx
 import TeamCard from "./team-card";
 import tomitaImage from "../../public/images/team_tomita.webp";
 import sowaImage from "../../public/images/team_sowa.webp";

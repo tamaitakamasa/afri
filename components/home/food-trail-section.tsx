@@ -1,3 +1,4 @@
+// components/home/food-trail-section.tsx
 import React from "react";
 import { Section } from "../layout/section";
 import NoteList from "../note/note-list";
