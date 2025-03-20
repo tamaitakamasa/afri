@@ -6,6 +6,7 @@ import Heading from "../common/heading";
 import { useEffect, useRef } from "react";
 import { useTheme } from "next-themes";
 
+
 export default function HomeConceptSection() {
   const ref = useRef(null);
   const isInView = useInView(ref);
@@ -18,11 +19,12 @@ export default function HomeConceptSection() {
 		console.log("Element is in view: ", isInView);
     // セクションが表示されたらダークモードに切り替え
     // 表示されなくなったら元のライトモードに戻す
-    if (isInView) {
-      setTheme("dark");
-    } else {
-      setTheme("light");
-    }
+    // if (isInView) {
+		// 	// もしダークモードならライトモードに切り替え
+    //   setTheme("dark");
+    // } else {
+    //   setTheme("light");
+    // }
   }, [isInView, setTheme]);
 
 

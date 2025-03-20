@@ -7,7 +7,7 @@ import Image from "next/image";
 
 export default function Footer() {
   return (
-    <div className="bg-zinc-100 py-24">
+    <div className="bg-muted py-24">
       <div className="container mx-auto px-4">
 				<div className="">
 					<Image src={logo} alt="Awaji Food Research Institute" />
