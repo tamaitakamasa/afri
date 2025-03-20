@@ -1,7 +1,6 @@
 // components/home/academy-join-section.tsx
 import Image from "next/image";
-import { Button } from "../ui/button";
-import Link from "next/link";
+
 import academyImage from "../../public/images/academy.jpg";
 import Heading from "../common/heading";
 import ButtonPrimary from "../common/button-primary";
@@ -29,7 +28,7 @@ export default function AcademyJoinSection() {
         </div>
 
         {/* Join Us側 - 右半分 */}
-        <div className="flex flex-1 flex-col items-center bg-gray-100 p-16 py-40">
+        <div className="flex flex-1 flex-col items-center bg-muted p-16 py-40">
           <Heading title="Join Us" />
           <p className="mt-42 mb-16 max-w-[400px]">
             食の研究やプロジェクトにご関心のある方、自治体・企業・団体様、ぜひご連絡ください。
