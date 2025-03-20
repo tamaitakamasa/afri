@@ -3,13 +3,27 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { TypeAnimation } from "react-type-animation";
 import mainVisual from "@/public/images/mv.webp";
+import logo from "@/public/images/logo.svg";
 import Image from "next/image";
+import { motion, useScroll, useTransform } from "motion/react";
 
 export default function HomeHero() {
+  const maskRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [imageLoaded, setImageLoaded] = useState(false);
   const [animationStarted, setAnimationStarted] = useState(false);
   const [typingCompleted, setTypingCompleted] = useState(false);
+
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    // "ターゲットの上部"が画面の上部に来た時点を0とし、"ターゲットの上部"が画面の下部に来た時点を1とする
+    offset: ["start end", "end start"],
+  });
+  const y = useTransform(
+    scrollYProgress,
+    [0, 1],
+    ["-20dvh", "20dvh"],
+  );
 
   // 画像がロードされたことを追跡
   const handleImageLoad = () => {
@@ -24,10 +38,10 @@ export default function HomeHero() {
 
   // アニメーションシーケンスを実行する関数
   const runAnimation = useCallback(async () => {
-    if (!containerRef.current || animationStarted) return;
+    if (!maskRef.current || animationStarted) return;
 
     setAnimationStarted(true);
-    const container = containerRef.current;
+    const container = maskRef.current;
 
     // 初期状態の設定を明示的に行う
     container.style.clipPath = "circle(5% at 50% 120%)";
@@ -70,16 +84,16 @@ export default function HomeHero() {
 
   // コンポーネントマウント時に初期スタイルを設定
   useEffect(() => {
-    if (containerRef.current) {
+    if (maskRef.current) {
       // 初期状態では非表示に設定（アニメーション開始前に画面が白くならないように）
-      containerRef.current.style.opacity = "0";
-      containerRef.current.style.clipPath = "circle(5% at 50% 120%)";
+      maskRef.current.style.opacity = "0";
+      maskRef.current.style.clipPath = "circle(5% at 50% 120%)";
     }
   }, []);
 
   // コンポーネントのアンマウント時のクリーンアップ
   useEffect(() => {
-    const currentContainer = containerRef.current;
+    const currentContainer = maskRef.current;
     return () => {
       if (currentContainer) {
         currentContainer.style.transition = "";
@@ -88,8 +102,8 @@ export default function HomeHero() {
   }, []);
 
   return (
-    <div className="relative h-screen w-full">
-      <div className="absolute inset-0 z-10 flex items-center justify-center">
+    <div className="relative h-screen w-full overflow-hidden" ref={containerRef}>
+      <div className="pointer-events-none absolute inset-0 z-10 flex items-center justify-center">
         <TypeAnimation
           sequence={[
             "awaji",
@@ -111,22 +125,30 @@ export default function HomeHero() {
         />
       </div>
       <div
-        ref={containerRef}
+        ref={maskRef}
         className="h-full w-full"
         style={{
           clipPath: "circle(5% at 50% 120%)",
           opacity: "0", // 初期状態では非表示
         }}
       >
-        <div className="pointer-events-none h-screen w-full relative">
-          <Image
-            src={mainVisual}
-            alt="main visual"
-            fill
-            className="object-cover"
-            onLoadingComplete={handleImageLoad}
-            priority
-          />
+        <div className="pointer-events-none relative h-screen w-full">
+          <motion.figure
+            className="absolute inset-0 -my-[20dvh]"
+            style={{ y }}
+          >
+            <Image
+              src={mainVisual}
+              alt="main visual"
+              fill
+              className="object-cover"
+              onLoadingComplete={handleImageLoad}
+              priority
+            />
+          </motion.figure>
+          <div className="absolute left-[10vi] top-1/2 z-10 -translate-y-1/2 transform">
+            <Image src={logo} alt="logo" className="w-[550px]" />
+          </div>
         </div>
       </div>
     </div>
