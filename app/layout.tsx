@@ -58,7 +58,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ja">
+    <html
+      lang="ja"
+      suppressHydrationWarning
+      className="scroll-smooth"
+    >
       <body
         className={`${notoSansJP.variable} ${geistMono.variable} ${urbanist.variable} antialiased`}
       >

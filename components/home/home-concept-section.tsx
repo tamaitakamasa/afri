@@ -14,18 +14,10 @@ export default function HomeConceptSection() {
   }, [isInView]);
 
   return (
-    <section className="container-xl py-30 px-8 relative">
-      <motion.div
-        id="sample"
-        className="w-100 aspect-square absolute top-0 left-0"
-        animate={{
-          backgroundColor: isInView ? "#93c5fd" : "#fde68a",
-        }}
-        transition={{ duration: 0.5 }}
-      ></motion.div>
+    <section className="container-xl py-30 relative px-8">
       <Heading title="Concept" className="text-center" />
       {/* 「美味しい」の解像度をあげる */}
-      <div className="relative mt-10 flex gap-12">
+      <div id="concept1" className="relative mt-10 flex gap-12">
         <div className="sticky top-0 h-fit w-5/12">
           <h3 className="py-20 text-[22px] font-medium">
             「美味しい」の解像度をあげる
@@ -50,9 +42,14 @@ export default function HomeConceptSection() {
         </div>
       </div>
       {/* 50年先の食文化をつくる */}
-      <div
+      <motion.div
+        id="concept2"
         className="gap-15 relative mt-10 flex"
         ref={ref}
+				animate={{
+          backgroundColor: isInView ? "#93c5fd" : "#fde68a",
+        }}
+        transition={{ duration: 0.5 }}
       >
         <div className="sticky top-0 h-fit w-5/12">
           <h3 className="py-20 text-[22px] font-medium">
@@ -71,7 +68,7 @@ export default function HomeConceptSection() {
             <p>たくさんの「美味しい」を感じられる未来へ。</p>
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }
