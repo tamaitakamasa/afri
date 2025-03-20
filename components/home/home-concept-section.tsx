@@ -4,27 +4,40 @@
 import { motion, useInView } from "motion/react";
 import Heading from "../common/heading";
 import { useEffect, useRef } from "react";
+import { useTheme } from "next-themes";
 
 export default function HomeConceptSection() {
   const ref = useRef(null);
   const isInView = useInView(ref);
+	const { setTheme } = useTheme();
 
-  useEffect(() => {
-    console.log("Element is in view: ", isInView);
-  }, [isInView]);
+  // useEffect(() => {
+  //   console.log("Element is in view: ", isInView);
+  // }, [isInView]);
+	useEffect(() => {
+		console.log("Element is in view: ", isInView);
+    // セクションが表示されたらダークモードに切り替え
+    // 表示されなくなったら元のライトモードに戻す
+    if (isInView) {
+      setTheme("dark");
+    } else {
+      setTheme("light");
+    }
+  }, [isInView, setTheme]);
+
 
   return (
     <section className="container-xl py-30 relative px-8">
       <Heading title="Concept" className="text-center" />
       {/* 「美味しい」の解像度をあげる */}
       <div id="concept1" className="relative mt-10 flex gap-12">
-        <div className="sticky top-0 h-fit w-5/12">
-          <h3 className="py-20 text-[22px] font-medium">
+        <div className="sticky top-0 h-fit w-4/12">
+          <h3 className="py-20 text-xl font-medium">
             「美味しい」の解像度をあげる
           </h3>
         </div>
-        <div className="w-7/12">
-          <div className="flex flex-col gap-10 py-20 leading-[1.8] tracking-wider">
+        <div className="w-8/12">
+          <div className="flex flex-col gap-10 py-20 leading-[2] tracking-wider">
             <p>
               Awaji Food Research
               Instituteは、あらゆる視点で「食」を研究、アーカイブし、50年先の食文化の創出に向けて学ぶ場を提供し、行動し続ける場です。
@@ -47,17 +60,17 @@ export default function HomeConceptSection() {
         className="gap-15 relative mt-10 flex"
         ref={ref}
 				animate={{
-          backgroundColor: isInView ? "#93c5fd" : "#fde68a",
+          // backgroundColor: isInView ? "#93c5fd" : "#fde68a",
         }}
         transition={{ duration: 0.5 }}
       >
-        <div className="sticky top-0 h-fit w-5/12">
-          <h3 className="py-20 text-[22px] font-medium">
+        <div className="sticky top-0 h-fit w-4/12">
+          <h3 className="py-20 text-xl font-medium">
             50年先の食文化をつくる
           </h3>
         </div>
-        <div className="w-7/12">
-          <div className="flex flex-col gap-10 py-20 leading-[1.8] tracking-wider">
+        <div className="w-8/12">
+          <div className="flex flex-col gap-10 py-20 leading-[2] tracking-wider">
             <p>
               20年で地域は大きく変わります。
               <br />
