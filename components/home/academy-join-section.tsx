@@ -12,7 +12,7 @@ export default function AcademyJoinSection() {
         {/* Academy側 - 左半分 */}
         <div className="flex flex-1 flex-col items-center bg-zinc-800 px-16 py-40 text-white">
           <Heading title="Academy" />
-          <div className="mt-15 w-[400px]">
+          <div className="mt-15 md:w-[400px]">
             <div className="relative mb-8 aspect-[400/266] w-full">
               <Image
                 src={academyImage}
@@ -28,7 +28,7 @@ export default function AcademyJoinSection() {
         </div>
 
         {/* Join Us側 - 右半分 */}
-        <div className="flex flex-1 flex-col items-center bg-muted p-16 py-40">
+        <div className="bg-muted flex flex-1 flex-col items-center p-16 py-40">
           <Heading title="Join Us" />
           <p className="mt-42 mb-16 max-w-[400px]">
             食の研究やプロジェクトにご関心のある方、自治体・企業・団体様、ぜひご連絡ください。

@@ -6,12 +6,13 @@ import Heading from "../common/heading";
 import { useEffect, useRef, useState } from "react";
 import { useTheme } from "next-themes";
 
-
 export default function HomeConceptSection() {
-	const ref = useRef(null);
+  const ref = useRef(null);
   const isInView = useInView(ref);
   const { theme, setTheme } = useTheme();
-  const [previousTheme, setPreviousTheme] = useState<string | undefined>(undefined);
+  const [previousTheme, setPreviousTheme] = useState<
+    string | undefined
+  >(undefined);
 
   useEffect(() => {
     // セクションが表示されたときだけ、前のテーマを記憶してダークモードに
@@ -26,19 +27,21 @@ export default function HomeConceptSection() {
     }
   }, [isInView, theme, previousTheme, setTheme]);
 
-
   return (
     <section className="container-xl py-30 relative px-8">
       <Heading title="Concept" className="text-center" />
       {/* 「美味しい」の解像度をあげる */}
-      <div id="concept1" className="relative mt-10 flex gap-14">
-        <div className="sticky top-0 h-fit w-4/12">
+      <div
+        id="concept1"
+        className="gap-15 relative mt-10 flex flex-col md:flex-row"
+      >
+        <div className="sticky top-0 h-fit md:w-4/12">
           <h3 className="py-20 text-xl font-medium">
             「美味しい」の解像度をあげる
           </h3>
         </div>
-        <div className="w-8/12">
-          <div className="flex flex-col gap-10 py-20 leading-[2] tracking-wider">
+        <div className="md:w-8/12">
+          <div className="flex flex-col gap-10 text-sm leading-[2] tracking-wider md:py-20 md:text-base">
             <p>
               Awaji Food Research
               Instituteは、あらゆる視点で「食」を研究、アーカイブし、50年先の食文化の創出に向けて学ぶ場を提供し、行動し続ける場です。
@@ -58,20 +61,22 @@ export default function HomeConceptSection() {
       {/* 50年先の食文化をつくる */}
       <motion.div
         id="concept2"
-        className="gap-15 relative mt-10 flex"
+        className="gap-15 relative mt-10 flex flex-col md:flex-row"
         ref={ref}
-				animate={{
-          // backgroundColor: isInView ? "#93c5fd" : "#fde68a",
-        }}
+        animate={
+          {
+            // backgroundColor: isInView ? "#93c5fd" : "#fde68a",
+          }
+        }
         transition={{ duration: 0.5 }}
       >
-        <div className="sticky top-0 h-fit w-4/12">
+        <div className="sticky top-0 h-fit md:w-4/12">
           <h3 className="py-20 text-xl font-medium">
             50年先の食文化をつくる
           </h3>
         </div>
-        <div className="w-8/12">
-          <div className="flex flex-col gap-10 py-20 leading-[2] tracking-wider">
+        <div className="md:w-8/12">
+          <div className="flex flex-col gap-10 text-sm leading-[2] tracking-wider md:py-20 md:text-base">
             <p>
               20年で地域は大きく変わります。
               <br />

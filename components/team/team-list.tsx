@@ -46,9 +46,6 @@ export default function TeamList() {
         <TeamCard
           key={index}
           {...member}
-          className={
-            index % 1 === 0 ? "border-r border-gray-200 pr-10" : ""
-          }
         />
       ))}
     </div>

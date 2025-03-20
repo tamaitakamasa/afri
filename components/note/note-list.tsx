@@ -16,8 +16,13 @@ export default async function NoteList({ className }: NoteListProps) {
   return (
     <div className={cn(className)}>
       <div className="grid grid-cols-2 gap-5">
-        {posts.map((post) => (
-          <div key={post.id} className="">
+        {posts.map((post, index) => (
+          <div
+            key={post.id}
+            className={
+              index % 2 === 0 ? "border-r border-gray-200" : ""
+            }
+          >
             <figure className="relative aspect-[460/345]">
               <a
                 href={post.noteUrl}
@@ -33,7 +38,7 @@ export default async function NoteList({ className }: NoteListProps) {
                 />
               </a>
             </figure>
-            <div className="px-12 py-8 flex flex-col gap-4">
+            <div className="flex flex-col gap-4 px-12 py-8">
               <span className="text-xs font-bold text-gray-500">
                 カテゴリー
               </span>
