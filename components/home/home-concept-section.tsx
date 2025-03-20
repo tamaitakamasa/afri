@@ -3,29 +3,28 @@
 
 import { motion, useInView } from "motion/react";
 import Heading from "../common/heading";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTheme } from "next-themes";
 
 
 export default function HomeConceptSection() {
-  const ref = useRef(null);
+	const ref = useRef(null);
   const isInView = useInView(ref);
-	const { setTheme } = useTheme();
+  const { theme, setTheme } = useTheme();
+  const [previousTheme, setPreviousTheme] = useState<string | undefined>(undefined);
 
-  // useEffect(() => {
-  //   console.log("Element is in view: ", isInView);
-  // }, [isInView]);
-	useEffect(() => {
-		console.log("Element is in view: ", isInView);
-    // セクションが表示されたらダークモードに切り替え
-    // 表示されなくなったら元のライトモードに戻す
-    // if (isInView) {
-		// 	// もしダークモードならライトモードに切り替え
-    //   setTheme("dark");
-    // } else {
-    //   setTheme("light");
-    // }
-  }, [isInView, setTheme]);
+  useEffect(() => {
+    // セクションが表示されたときだけ、前のテーマを記憶してダークモードに
+    if (isInView && !previousTheme) {
+      setPreviousTheme(theme);
+      setTheme("dark");
+    }
+    // セクションから離れたら、保存していた元のテーマに戻す
+    else if (!isInView && previousTheme) {
+      setTheme(previousTheme);
+      setPreviousTheme(undefined);
+    }
+  }, [isInView, theme, previousTheme, setTheme]);
 
 
   return (
