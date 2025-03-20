@@ -4,7 +4,7 @@ import Heading from "../common/heading";
 
 export default function HomeTeamsSection() {
   return (
-    <section className="bg-muted">
+    <section className="bg-muted py-20">
       <div className="mx-auto max-w-[1000px]">
         <div className="relative flex w-full gap-40">
           <div className="sticky top-0 h-fit py-20">

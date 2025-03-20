@@ -32,7 +32,7 @@ export default function HomeConceptSection() {
     <section className="container-xl py-30 relative px-8">
       <Heading title="Concept" className="text-center" />
       {/* 「美味しい」の解像度をあげる */}
-      <div id="concept1" className="relative mt-10 flex gap-12">
+      <div id="concept1" className="relative mt-10 flex gap-14">
         <div className="sticky top-0 h-fit w-4/12">
           <h3 className="py-20 text-xl font-medium">
             「美味しい」の解像度をあげる

@@ -4,6 +4,7 @@ import { Button } from "../ui/button";
 import Link from "next/link";
 import academyImage from "../../public/images/academy.jpg";
 import Heading from "../common/heading";
+import ButtonPrimary from "../common/button-primary";
 
 export default function AcademyJoinSection() {
   return (
@@ -33,14 +34,7 @@ export default function AcademyJoinSection() {
           <p className="mt-42 mb-16 max-w-[400px]">
             食の研究やプロジェクトにご関心のある方、自治体・企業・団体様、ぜひご連絡ください。
           </p>
-          <Button
-            asChild
-            className=""
-          >
-            <Link href="/contact" className="flex items-center gap-2">
-              CONTACT
-            </Link>
-          </Button>
+          <ButtonPrimary label="Contact" url="#" />
         </div>
       </div>
     </div>
