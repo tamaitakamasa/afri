@@ -1,3 +1,5 @@
+// components/common/button-primary.tsx
+
 import Link from "next/link";
 import React from "react";
 import { Button } from "../ui/button";
@@ -15,12 +17,20 @@ export default function ButtonPrimary({
   target,
 }: ButtonPrimaryProps) {
   return (
-    <Button className="h-12 cursor-pointer rounded-full !px-6" asChild>
+    <Button className="h-12 cursor-pointer rounded-full !px-6 group" asChild>
       <Link href={url} target={target}>
-        <span className="font-en text-sm font-bold uppercase relative bottom-[-1px]">
-          {label}
-        </span>
-        <ArrowRight className="!h-6 !w-6" strokeWidth={1} />
+        <div className="relative overflow-hidden">
+          <span className="font-en text-sm font-bold uppercase inline-block transition-transform duration-300 group-hover:-translate-y-full">
+            {label}
+          </span>
+          <span className="font-en text-sm font-bold uppercase absolute left-0 top-full transition-transform duration-300 group-hover:-translate-y-full">
+            {label}
+          </span>
+        </div>
+        <ArrowRight
+          className="!h-6 !w-6 ml-1 transition-transform duration-300 group-hover:translate-x-1"
+          strokeWidth={1}
+        />
       </Link>
     </Button>
   );
