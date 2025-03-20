@@ -1,4 +1,5 @@
 // components/team/team-card.tsx
+import { cn } from "@/lib/utils";
 import Image, { StaticImageData } from "next/image";
 
 interface TeamCardProps {
@@ -7,6 +8,7 @@ interface TeamCardProps {
   company?: string;
   description: string;
   image?: StaticImageData;
+  className?: string;
 }
 
 export default function TeamCard({
@@ -15,11 +17,12 @@ export default function TeamCard({
   company,
   description,
   image,
+  className,
 }: TeamCardProps) {
   return (
-    <div>
+    <div className={cn(className)}>
       <div className="flex gap-4">
-        <div className="aspect-square w-full max-w-[400px] relative">
+        <div className="relative aspect-square w-full max-w-[400px]">
           {image ? (
             <Image
               src={image}
@@ -28,7 +31,7 @@ export default function TeamCard({
               className="object-cover"
             />
           ) : (
-            <div className="w-full h-full bg-gray-200"></div>
+            <div className="h-full w-full bg-gray-200"></div>
           )}
         </div>
         <div className="flex flex-col justify-center gap-4 p-4">
@@ -48,7 +51,9 @@ export default function TeamCard({
         </div>
       </div>
       <div className="mt-8">
-        <p className="whitespace-pre-wrap tracking-wider text-sm leading-6">{description}</p>
+        <p className="whitespace-pre-wrap text-sm leading-6 tracking-wider">
+          {description}
+        </p>
       </div>
     </div>
   );

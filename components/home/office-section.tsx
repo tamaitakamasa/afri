@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import officeImage from "../../public/images/office.jpg";
+import officeImage from "../../public/images/hub.webp";
 
 export default function OfficeSection() {
   return (

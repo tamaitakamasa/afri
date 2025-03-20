@@ -34,7 +34,7 @@ const TEAM_MEMBERS: TeamMember[] = [
     en: "sachiko kita",
     company: "studio kahika",
     description:
-      "明石市出身。\n大学にて建築を専攻後、東京で広告会社に入社し、企業のブランディングや広報活動に携わる。その後、都市デザイン・リノベーションまちづくりの領域から各地のプロジェクトに従事し、 2021年に独立。\"地域の価値の編集と発信\"を軸に、地域の事業者のブランディング戦略や事業企画、クリエイティブ制作、プロジェクトマネジメント等に幅広く携わる。2022年～淡路島在住。",
+      '明石市出身。\n大学にて建築を専攻後、東京で広告会社に入社し、企業のブランディングや広報活動に携わる。その後、都市デザイン・リノベーションまちづくりの領域から各地のプロジェクトに従事し、 2021年に独立。"地域の価値の編集と発信"を軸に、地域の事業者のブランディング戦略や事業企画、クリエイティブ制作、プロジェクトマネジメント等に幅広く携わる。2022年～淡路島在住。',
     image: kitaImage,
   },
 ];
@@ -43,7 +43,13 @@ export default function TeamList() {
   return (
     <div className="flex flex-col gap-40">
       {TEAM_MEMBERS.map((member, index) => (
-        <TeamCard key={index} {...member} />
+        <TeamCard
+          key={index}
+          {...member}
+          className={
+            index % 1 === 0 ? "border-r border-gray-200 pr-10" : ""
+          }
+        />
       ))}
     </div>
   );

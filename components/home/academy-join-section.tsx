@@ -1,7 +1,7 @@
 // components/home/academy-join-section.tsx
 import Image from "next/image";
 
-import academyImage from "../../public/images/academy.jpg";
+import academyImage from "../../public/images/academy.webp";
 import Heading from "../common/heading";
 import ButtonPrimary from "../common/button-primary";
 
