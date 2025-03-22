@@ -64,7 +64,7 @@ export default function RootLayout({
       className="scroll-smooth"
     >
       <body
-        className={`${notoSansJP.variable} ${geistMono.variable} ${urbanist.variable} antialiased`}
+        className={`${notoSansJP.variable} ${geistMono.variable} ${urbanist.variable}`}
       >
         <ThemeProvider
           attribute="class"

@@ -17,18 +17,21 @@ export default function ButtonPrimary({
   target,
 }: ButtonPrimaryProps) {
   return (
-    <Button className="h-12 cursor-pointer rounded-full !px-6 group" asChild>
+    <Button
+      className="group h-12 cursor-pointer rounded-full !px-6 hover:!bg-primary"
+      asChild
+    >
       <Link href={url} target={target}>
         <div className="relative overflow-hidden">
-          <span className="font-en text-sm font-bold uppercase inline-block transition-transform duration-300 group-hover:-translate-y-full">
+          <span className="font-en inline-block text-sm font-bold uppercase transition-transform duration-300 group-hover:-translate-y-full">
             {label}
           </span>
-          <span className="font-en text-sm font-bold uppercase absolute left-0 top-full transition-transform duration-300 group-hover:-translate-y-full">
+          <span className="font-en absolute left-0 top-full text-sm font-bold uppercase transition-transform duration-300 group-hover:-translate-y-full">
             {label}
           </span>
         </div>
         <ArrowRight
-          className="!h-6 !w-6 ml-1 transition-transform duration-300 group-hover:translate-x-1"
+          className="ml-1 !h-6 !w-6 transition-transform duration-300 group-hover:translate-x-1"
           strokeWidth={1}
         />
       </Link>
