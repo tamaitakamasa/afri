@@ -2,8 +2,9 @@
 import Image from "next/image";
 
 import academyImage from "../../public/images/academy.webp";
-import Heading from "../common/heading";
+// import Heading from "../common/heading";
 import ButtonPrimary from "../common/button-primary";
+import AnimatedHeading from "../common/animated-heading";
 
 export default function AcademyJoinSection() {
   return (
@@ -11,7 +12,7 @@ export default function AcademyJoinSection() {
       <div className="flex flex-col md:flex-row">
         {/* Academy側 - 左半分 */}
         <div className="flex flex-1 flex-col items-center bg-zinc-800 px-16 py-40 text-white">
-          <Heading title="Academy" />
+          <AnimatedHeading title="Academy" />
           <div className="mt-15 md:w-[400px]">
             <div className="relative mb-8 aspect-[400/266] w-full">
               <Image
@@ -29,7 +30,7 @@ export default function AcademyJoinSection() {
 
         {/* Join Us側 - 右半分 */}
         <div className="bg-muted flex flex-1 flex-col items-center p-16 py-40">
-          <Heading title="Join Us" />
+          <AnimatedHeading title="Join Us" />
           <p className="mt-42 mb-16 max-w-[400px]">
             食の研究やプロジェクトにご関心のある方、自治体・企業・団体様、ぜひご連絡ください。
           </p>

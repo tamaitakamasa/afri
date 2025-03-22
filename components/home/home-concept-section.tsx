@@ -5,6 +5,8 @@ import { motion, useInView } from "motion/react";
 import Heading from "../common/heading";
 import { useEffect, useRef, useState } from "react";
 import { useTheme } from "next-themes";
+import AnimatedText from "../common/animated-text";
+// import AnimatedHeading from "../common/animated-heading";
 
 export default function HomeConceptSection() {
   const ref = useRef(null);
@@ -35,10 +37,14 @@ export default function HomeConceptSection() {
         id="concept1"
         className="gap-15 relative mt-10 flex flex-col md:flex-row"
       >
-        <div className="sticky top-0 h-fit md:w-4/12">
-          <h3 className="py-20 text-xl font-medium">
+        <div className="sticky top-0 h-fit py-20 md:w-4/12">
+          <AnimatedText
+            wrapper="h3"
+            className="text-xl font-medium"
+            delay={500}
+          >
             「美味しい」の解像度をあげる
-          </h3>
+          </AnimatedText>
         </div>
         <div className="md:w-8/12">
           <div className="flex flex-col gap-10 text-sm leading-[2] tracking-wider md:py-20 md:text-base">
@@ -70,10 +76,17 @@ export default function HomeConceptSection() {
         }
         transition={{ duration: 0.5 }}
       >
-        <div className="sticky top-0 h-fit md:w-4/12">
-          <h3 className="py-20 text-xl font-medium">
+        <div className="sticky top-0 h-fit py-20 md:w-4/12">
+          {/* <h3 className="py-20 text-xl font-medium">
             50年先の食文化をつくる
-          </h3>
+          </h3> */}
+          <AnimatedText
+            wrapper="h3"
+            className="text-xl font-medium"
+            delay={500}
+          >
+            50年先の食文化をつくる
+          </AnimatedText>
         </div>
         <div className="md:w-8/12">
           <div className="flex flex-col gap-10 text-sm leading-[2] tracking-wider md:py-20 md:text-base">

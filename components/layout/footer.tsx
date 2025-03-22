@@ -1,20 +1,16 @@
 import { NAVI_ITEMS, NOTE_URL } from "@/constants/site";
 import Link from "next/link";
 import { Separator } from "../ui/separator";
-import logo from "../../public/images/logo.svg";
 import noteIcon from "../../public/images/note_icon.svg";
 import Image from "next/image";
+import { ThemeLogo } from "../common/theme-logo";
 
 export default function Footer() {
   return (
     <div className="bg-muted py-24">
       <div className="container mx-auto px-4">
-        <div className="">
-          <Image
-            src={logo}
-            alt="Awaji Food Research Institute"
-            className="max-w-[70vi]"
-          />
+        <div className="max-w-[70vi]">
+					<ThemeLogo width={300} />
         </div>
         <div className="md:mt-30 mt-12 flex flex-wrap gap-6 md:gap-8">
           {NAVI_ITEMS.map((item, index) => (

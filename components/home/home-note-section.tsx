@@ -1,17 +1,18 @@
 // components/home/home-note-section.tsx
 import Image from "next/image";
-import Heading from "../common/heading";
+// import Heading from "../common/heading";
 import NoteList from "../note/note-list";
 import noteIcon from "@/public/images/note_icon.svg";
 import Link from "next/link";
 import { NOTE_URL } from "@/constants/site";
 import ButtonPrimary from "../common/button-primary";
+import AnimatedHeading from "../common/animated-heading";
 
 export default function HomeNoteSection() {
   return (
     <section className="container-xl py-40">
       <div className="flex items-center justify-between">
-        <Heading title="note" />
+        <AnimatedHeading title="note" />
         <ButtonPrimary label="View More" url="#" />
       </div>
       <div className="mt-12">
