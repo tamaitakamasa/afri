@@ -7,7 +7,7 @@ import { ThemeLogo } from "../common/theme-logo";
 
 export default function Footer() {
   return (
-    <div className="bg-muted py-24">
+    <div className="bg-muted py-24 transition-bg">
       <div className="container mx-auto px-4">
         <div className="max-w-[70vi]">
 					<ThemeLogo width={300} />

@@ -1,6 +1,6 @@
 // app/layout.tsx
 import type { Metadata } from "next";
-import { Geist_Mono, Urbanist, Noto_Sans_JP } from "next/font/google";
+import { Urbanist, Noto_Sans_JP } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
@@ -25,10 +25,10 @@ const notoSansJP = Noto_Sans_JP({
   ],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+// const geistMono = Geist_Mono({
+//   variable: "--font-geist-mono",
+//   subsets: ["latin"],
+// });
 
 const urbanist = Urbanist({
   variable: "--font-urbanist",
@@ -64,7 +64,7 @@ export default function RootLayout({
       className="scroll-smooth"
     >
       <body
-        className={`${notoSansJP.variable} ${geistMono.variable} ${urbanist.variable}`}
+        className={`${notoSansJP.variable} ${urbanist.variable} antialiased`}
       >
         <ThemeProvider
           attribute="class"

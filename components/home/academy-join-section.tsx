@@ -29,7 +29,7 @@ export default function AcademyJoinSection() {
         </div>
 
         {/* Join Us側 - 右半分 */}
-        <div className="bg-muted flex flex-1 flex-col items-center p-16 py-40">
+        <div className="bg-muted transition-bg flex flex-1 flex-col items-center p-16 py-40">
           <AnimatedHeading title="Join Us" />
           <p className="mt-42 mb-16 max-w-[400px]">
             食の研究やプロジェクトにご関心のある方、自治体・企業・団体様、ぜひご連絡ください。

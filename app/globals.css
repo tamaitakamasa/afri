@@ -125,11 +125,14 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground tracking-wider transition-colors duration-500;
+    @apply bg-background text-foreground tracking-wider;
     font-family: var(--font-noto-sans-jp), sans-serif;
-    /* transition:
-      background-color 1.4s ease,
-      color 1.4s ease; */
+    transition: all 0.8s ease-in-out;
+  }
+
+  .transition-bg {
+    transition-property: background-color;
+    transition-duration: 0.8s;
   }
 
   .font-en {
