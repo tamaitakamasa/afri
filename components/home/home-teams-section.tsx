@@ -5,7 +5,7 @@ import AnimatedHeading from "../common/animated-heading";
 
 export default function HomeTeamsSection() {
   return (
-    <section className="bg-muted py-20 transition-bg">
+    <section id="team" className="bg-muted py-20 transition-bg">
       <div className="mx-auto max-w-[1000px]">
         <div className="relative md:flex w-full gap-40">
           <div className="sticky top-0 h-fit py-20">

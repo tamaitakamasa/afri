@@ -10,9 +10,9 @@ import AnimatedHeading from "../common/animated-heading";
 
 export default function HomeNoteSection() {
   return (
-    <section className="container-xl py-40">
+    <section id="column" className="container-xl py-40">
       <div className="flex items-center justify-between">
-        <AnimatedHeading title="note" />
+        <AnimatedHeading title="Column" />
         <ButtonPrimary label="View More" url="#" />
       </div>
       <div className="mt-12">

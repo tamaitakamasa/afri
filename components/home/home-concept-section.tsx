@@ -30,7 +30,7 @@ export default function HomeConceptSection() {
   }, [isInView, theme, previousTheme, setTheme]);
 
   return (
-    <section className="container-xl py-30 relative px-8">
+    <section id="concept" className="container-xl py-30 relative px-8">
       <Heading title="Concept" className="text-center" />
       {/* 「美味しい」の解像度をあげる */}
       <div
