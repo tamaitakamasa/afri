@@ -42,7 +42,7 @@ export default function TeamCard({
               </h3>
             )}
             <h2 className="flex flex-col gap-1">
-              <span className="text-lg sm:text-xl">{name}</span>
+              <span className="text-xl sm:text-xl">{name}</span>
               <span className="font-en text-[11px] font-bold uppercase tracking-[0.2em] text-gray-400 sm:text-sm">
                 {en}
               </span>
