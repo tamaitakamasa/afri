@@ -32,7 +32,7 @@ export default function Header() {
     <>
       <motion.header
         style={isHomePage ? { opacity: menuOpacity } : { opacity: 1 }}
-        className="fixed top-8 z-20 w-full"
+        className="fixed top-8 z-20 w-full hidden md:block"
       >
         <div className="container mx-auto flex flex-row items-center justify-between px-4">
           <h1 className="">

@@ -18,7 +18,10 @@ export default function HomeConceptSection() {
   const [previousTheme, setPreviousTheme] = useState<
     string | undefined
   >(undefined);
-  const { isLoading, startLoading, stopLoading } = useLoading(true, 500);
+  const { isLoading, startLoading, stopLoading } = useLoading(
+    true,
+    500,
+  );
 
   useEffect(() => {
     // コンポーネントがマウントされたときにローディングを開始
@@ -45,18 +48,24 @@ export default function HomeConceptSection() {
   }, [isInView, theme, previousTheme, setTheme]);
 
   return (
-    <section id="concept" className="container-xl py-30 relative px-8">
+    <section
+      id="concept"
+      className="container-xl py-30 relative px-8"
+    >
       <LoadingOverlay isLoading={isLoading} spinnerColor="white" />
-      <Heading title="Concept" className="w-full grid items-center justify-center" />
+      <Heading
+        title="Concept"
+        className="grid w-full items-center justify-center"
+      />
       {/* 「美味しい」の解像度をあげる */}
       <div
         id="concept1"
-        className="gap-15 relative mt-10 flex flex-col md:flex-row"
+        className="md:gap-15 relative mt-16 flex flex-col gap-10 md:mt-10 md:flex-row"
       >
-        <div className="sticky top-0 h-fit py-20 md:w-4/12">
+        <div className="md:sticky top-0 h-fit md:w-4/12 md:py-20">
           <AnimatedText
             wrapper="h3"
-            className="text-xl font-medium"
+            className="text-lg md:text-xl font-medium"
             delay={500}
           >
             「美味しい」の解像度をあげる
@@ -83,19 +92,11 @@ export default function HomeConceptSection() {
       {/* 50年先の食文化をつくる */}
       <motion.div
         id="concept2"
-        className="gap-15 relative mt-10 flex flex-col md:flex-row"
+        className="md:gap-15 relative mt-16 flex flex-col gap-10 md:mt-10 md:flex-row"
         ref={ref}
-        animate={
-          {
-            // backgroundColor: isInView ? "#93c5fd" : "#fde68a",
-          }
-        }
         transition={{ duration: 0.5 }}
       >
-        <div className="sticky top-0 h-fit py-20 md:w-4/12">
-          {/* <h3 className="py-20 text-xl font-medium">
-            50年先の食文化をつくる
-          </h3> */}
+        <div className="md:sticky top-0 h-fit md:w-4/12 md:py-20">
           <AnimatedText
             wrapper="h3"
             className="text-xl font-medium"
