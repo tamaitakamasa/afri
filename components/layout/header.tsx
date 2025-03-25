@@ -2,13 +2,17 @@
 
 import { motion, useScroll, useTransform } from "motion/react";
 import { ThemeLogo } from "../common/theme-logo";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { Menu } from "lucide-react";
+import Drawer from "../common/drawer";
+import { Button } from "@/components/ui/button";
 
 export default function Header() {
   const pathname = usePathname();
   const isHomePage = pathname === "/";
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -20,6 +24,10 @@ export default function Header() {
     [0, 0.8, 0.85],
     [0, 0, 1],
   );
+
+  const toggleDrawer = () => {
+    setIsDrawerOpen(!isDrawerOpen);
+  };
 
   return (
     <>
@@ -36,7 +44,17 @@ export default function Header() {
               <ThemeLogo />
             </Link>
           </h1>
-          <div>menu</div>
+          <div>
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={toggleDrawer}
+              className="text-current hover:bg-transparent"
+              aria-label="メニューを開く"
+            >
+              <Menu size={24} />
+            </Button>
+          </div>
         </div>
       </motion.header>
       {isHomePage && (
@@ -45,6 +63,7 @@ export default function Header() {
           ref={containerRef}
         />
       )}
+      <Drawer isOpen={isDrawerOpen} onClose={() => setIsDrawerOpen(false)} />
     </>
   );
 }
