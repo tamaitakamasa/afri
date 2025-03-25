@@ -1,10 +1,10 @@
 "use client";
 
 import { usePathname, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import { motion } from "motion/react";
 
-export default function RouteLoadingIndicator() {
+function RouteLoadingIndicatorContent() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const [isLoading, setIsLoading] = useState(false);
@@ -25,5 +25,13 @@ export default function RouteLoadingIndicator() {
       animate={{ width: "100%" }}
       transition={{ duration: 0.5, ease: "easeInOut" }}
     />
+  );
+}
+
+export default function RouteLoadingIndicator() {
+  return (
+    <Suspense>
+      <RouteLoadingIndicatorContent />
+    </Suspense>
   );
 }

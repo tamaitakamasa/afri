@@ -2,13 +2,13 @@
 
 import { usePathname, useSearchParams } from "next/navigation";
 import { loadingEmitter } from "@/lib/utils";
-import { useEffect } from "react";
+import { useEffect, Suspense } from "react";
 
 interface RouterTransitionProviderProps {
   children: React.ReactNode;
 }
 
-export default function RouterTransitionProvider({
+function RouterTransitionContent({
   children,
 }: RouterTransitionProviderProps) {
   const pathname = usePathname();
@@ -29,4 +29,14 @@ export default function RouterTransitionProvider({
   }, [pathname, searchParams]);
 
   return <>{children}</>;
+}
+
+export default function RouterTransitionProvider({
+  children,
+}: RouterTransitionProviderProps) {
+  return (
+    <Suspense>
+      <RouterTransitionContent>{children}</RouterTransitionContent>
+    </Suspense>
+  );
 }
