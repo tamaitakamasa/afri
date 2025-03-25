@@ -7,6 +7,9 @@ import Footer from "@/components/layout/footer";
 import { SITE_DESCRIPTION, SITE_TITLE } from "@/constants/site";
 import FloatingMenu from "@/components/layout/floating-menu";
 import { ThemeProvider } from "next-themes";
+import GlobalLoadingIndicator from "@/components/common/global-loading-indicator";
+import RouterTransitionProvider from "@/components/common/router-transition-provider";
+import { cn } from "@/lib/utils";
 
 const notoSansJP = Noto_Sans_JP({
   variable: "--font-noto-sans-jp",
@@ -64,17 +67,22 @@ export default function RootLayout({
       className="scroll-smooth"
     >
       <body
-        className={`${notoSansJP.variable} ${urbanist.variable} antialiased`}
+        className={cn(
+          `${notoSansJP.variable} ${urbanist.variable} antialiased`
+        )}
       >
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
         >
-          <Header />
-          {children}
-          <FloatingMenu />
-          <Footer />
+          <RouterTransitionProvider>
+            <GlobalLoadingIndicator />
+            <Header />
+            {children}
+            <FloatingMenu />
+            <Footer />
+          </RouterTransitionProvider>
         </ThemeProvider>
       </body>
     </html>
