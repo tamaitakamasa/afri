@@ -7,7 +7,6 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { Menu } from "lucide-react";
 import NavDrawer from "../common/drawer";
-import { Button } from "@/components/ui/button";
 
 export default function Header() {
   const pathname = usePathname();
@@ -45,16 +44,21 @@ export default function Header() {
             </Link>
           </h1>
           <div className="flex flex-row items-center gap-8">
-						<Link href="/contact" className="bg-background/80 backdrop-blur-sm rounded-full px-6 py-2 font-en text-sm font-bold uppercase">
-							Contact
-						</Link>
+            <Link
+              href="/contact"
+              className="font-en border-1 rounded-full border-zinc-800 px-6 py-2 text-sm font-bold uppercase backdrop-blur-sm dark:border-zinc-100"
+            >
+              Contact
+            </Link>
             <div
               onClick={toggleDrawer}
               className="flex cursor-pointer flex-col items-center justify-center gap-0 text-current hover:bg-transparent"
               aria-label="メニューを開く"
             >
               <Menu size={36} strokeWidth={1} />
-              <span className="text-[10px] font-bold font-en uppercase">menu</span>
+              <span className="font-en text-[10px] font-bold uppercase">
+                menu
+              </span>
             </div>
           </div>
         </div>
