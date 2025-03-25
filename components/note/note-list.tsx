@@ -1,9 +1,8 @@
 // components/note/note-list.tsx
 import { getAllPosts } from "@/lib/note";
-import { cn, formatDateToYYYYMMDD } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 import { NoteArticle } from "@/types/note";
-import { ArrowUpRight } from "lucide-react";
-import Image from "next/image";
+import { NoteCard } from "./note-card";
 
 interface NoteListProps {
   className?: string;
@@ -18,56 +17,11 @@ export default async function NoteList({ className }: NoteListProps) {
     <div className={cn(className)}>
       <div className="grid grid-cols-2 gap-5">
         {posts.map((post, index) => (
-          <div
+          <NoteCard
             key={post.id}
-            className={
-              index % 2 === 0 ? "border-r border-gray-200" : ""
-            }
-          >
-            <figure className="relative aspect-[460/345]">
-              <a
-                href={post.noteUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Image
-                  src={post.eyecatch}
-                  alt={post.name}
-                  fill
-                  sizes="50vw"
-                  style={{ objectFit: "cover" }}
-                />
-              </a>
-              <div className="absolute right-5 bottom-5 z-10">
-                <div className="bg-zinc-700 rounded-full px-4 py-1">
-                  <ArrowUpRight color="white" strokeWidth={1.5} />
-                </div>
-              </div>
-            </figure>
-            <div className="flex flex-col gap-4 px-12 py-8">
-              <span className="text-xs font-bold text-gray-500">
-                カテゴリー
-              </span>
-              <h2 className="line-clamp-2 text-xl tracking-wider">
-                <a href={post.noteUrl} target="_blank">
-                  {post.name}
-                </a>
-              </h2>
-              <div className="mt-5 flex flex-wrap gap-1.5">
-                {post.hashtags.map((tag, index) => (
-                  <span
-                    key={index}
-                    className="text-xs tracking-wider"
-                  >
-                    {tag.hashtag.name}
-                  </span>
-                ))}
-              </div>
-              <time className="font-en font-bold tracking-[0.2em]">
-                {formatDateToYYYYMMDD(post.publishAt)}
-              </time>
-            </div>
-          </div>
+            post={post}
+            hasBorder={index % 2 === 0}
+          />
         ))}
       </div>
     </div>
