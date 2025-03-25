@@ -44,16 +44,18 @@ export default function Header() {
               <ThemeLogo />
             </Link>
           </h1>
-          <div>
-            <Button
-              variant="ghost"
-              size="icon"
+          <div className="flex flex-row items-center gap-8">
+						<Link href="/contact" className="bg-background/80 backdrop-blur-sm rounded-full px-6 py-2 font-en text-sm font-bold uppercase">
+							Contact
+						</Link>
+            <div
               onClick={toggleDrawer}
-              className="text-current hover:bg-transparent"
+              className="flex cursor-pointer flex-col items-center justify-center gap-0 text-current hover:bg-transparent"
               aria-label="メニューを開く"
             >
-              <Menu size={24} />
-            </Button>
+              <Menu size={36} strokeWidth={1} />
+              <span className="text-[10px] font-bold font-en uppercase">menu</span>
+            </div>
           </div>
         </div>
       </motion.header>
@@ -63,7 +65,10 @@ export default function Header() {
           ref={containerRef}
         />
       )}
-      <NavDrawer isOpen={isDrawerOpen} onClose={() => setIsDrawerOpen(false)} />
+      <NavDrawer
+        isOpen={isDrawerOpen}
+        onClose={() => setIsDrawerOpen(false)}
+      />
     </>
   );
 }
