@@ -8,8 +8,8 @@ export default function HomeTeamsSection() {
     <section id="team" className="bg-muted py-20 transition-bg">
       <div className="mx-auto max-w-[1000px]">
         <div className="relative md:flex w-full gap-40">
-          <div className="sticky top-0 h-fit py-20">
-            <AnimatedHeading title="Team" />
+          <div className="sticky top-0 z-10 h-fit md:py-20">
+            <AnimatedHeading title="Team" className="" />
           </div>
           <div className="py-20">
             <TeamList />

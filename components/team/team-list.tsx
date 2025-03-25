@@ -41,12 +41,9 @@ const TEAM_MEMBERS: TeamMember[] = [
 
 export default function TeamList() {
   return (
-    <div className="flex flex-col gap-40">
+    <div className="flex flex-col gap-20 md:gap-40">
       {TEAM_MEMBERS.map((member, index) => (
-        <TeamCard
-          key={index}
-          {...member}
-        />
+        <TeamCard key={index} {...member} />
       ))}
     </div>
   );
