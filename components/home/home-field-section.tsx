@@ -1,6 +1,7 @@
 // components/home/home-field-section.tsx
 import Image from "next/image";
 import map from "/public/images/map.webp";
+import AnimatedText from "../common/animated-text";
 
 export default function HomeFieldSection() {
   return (
@@ -15,9 +16,13 @@ export default function HomeFieldSection() {
       </div>
       <div className="md:px-30 bg-background transition-bg py-30 relative z-10 ml-auto flex flex-col gap-20 md:w-7/12">
         <div className="max-w-[32rem]">
-          <h3 className="text-xl font-medium">
+          <AnimatedText
+            wrapper="h3"
+            className="text-xl font-medium"
+            delay={500}
+          >
             淡路島というフィールド
-          </h3>
+          </AnimatedText>
           <div className="mt-15 flex flex-col gap-10 leading-[2] tracking-wider">
             <p>
               淡路島は東京23区ほどの面積がある大きな島で、東は大阪湾、西は瀬戸内海、南北は鳴門海峡と明石海峡など多様な海に囲まれ、海と山がすぐそばにあるなど、自然の循環がよく感じられる島です。
