@@ -1,26 +1,27 @@
 import { NAVI_ITEMS, NOTE_URL } from "@/constants/site";
-import Link from "next/link";
 import { Separator } from "../ui/separator";
 import noteIcon from "../../public/images/note_icon.svg";
 import Image from "next/image";
 import { ThemeLogo } from "../common/theme-logo";
+import { AnimatedTextLink } from "../common/animated-text-link";
+import Link from "next/link";
 
 export default function Footer() {
   return (
     <div className="bg-muted py-24 transition-bg">
       <div className="container mx-auto px-4">
         <div className="max-w-[70vi]">
-					<ThemeLogo width={300} />
+          <ThemeLogo width={300} />
         </div>
         <div className="md:mt-30 mt-12 flex flex-wrap gap-6 md:gap-8">
           {NAVI_ITEMS.map((item, index) => (
-            <Link
+            <AnimatedTextLink
               key={index}
               href={item.href}
               className="font-en text-sm font-black uppercase md:text-base"
             >
               {item.label}
-            </Link>
+            </AnimatedTextLink>
           ))}
         </div>
         <Separator className="my-16" />

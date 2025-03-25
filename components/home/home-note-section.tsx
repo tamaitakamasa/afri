@@ -5,15 +5,15 @@ import NoteList from "../note/note-list";
 import noteIcon from "@/public/images/note_icon.svg";
 import Link from "next/link";
 import { NOTE_URL } from "@/constants/site";
-import ButtonPrimary from "../common/button-primary";
 import AnimatedHeading from "../common/animated-heading";
+import PrimaryButton from "../common/primary-button";
 
 export default function HomeNoteSection() {
   return (
     <section id="column" className="container-xl py-40">
       <div className="flex items-center justify-between">
         <AnimatedHeading title="Column" />
-        <ButtonPrimary label="View More" url="#" />
+        <PrimaryButton label="View More" url="#" />
       </div>
       <div className="mt-12">
         <p>私たちの活動やプロジェクトについて発信しています。</p>

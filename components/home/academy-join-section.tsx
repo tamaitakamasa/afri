@@ -2,9 +2,8 @@
 import Image from "next/image";
 
 import academyImage from "../../public/images/academy.webp";
-// import Heading from "../common/heading";
-import ButtonPrimary from "../common/button-primary";
 import AnimatedHeading from "../common/animated-heading";
+import PrimaryButton from "../common/primary-button";
 
 export default function AcademyJoinSection() {
   return (
@@ -34,7 +33,7 @@ export default function AcademyJoinSection() {
           <p className="mt-42 mb-16 max-w-[400px]">
             食の研究やプロジェクトにご関心のある方、自治体・企業・団体様、ぜひご連絡ください。
           </p>
-          <ButtonPrimary label="Contact" url="#" />
+          <PrimaryButton label="Contact" url="#" />
         </div>
       </div>
     </div>

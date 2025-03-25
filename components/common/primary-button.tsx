@@ -5,17 +5,17 @@ import React from "react";
 import { Button } from "../ui/button";
 import { ArrowRight } from "lucide-react";
 
-interface ButtonPrimaryProps {
+interface PrimaryButtonProps {
   label: string;
   url: string;
   target?: string;
 }
 
-export default function ButtonPrimary({
+export default function PrimaryButton({
   label,
   url,
   target,
-}: ButtonPrimaryProps) {
+}: PrimaryButtonProps) {
   return (
     <Button
       className="group h-12 cursor-pointer rounded-full !px-6 hover:!bg-primary"
