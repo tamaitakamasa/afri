@@ -2,6 +2,7 @@
 import { getAllPosts } from "@/lib/note";
 import { cn, formatDateToYYYYMMDD } from "@/lib/utils";
 import { NoteArticle } from "@/types/note";
+import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 
 interface NoteListProps {
@@ -37,6 +38,11 @@ export default async function NoteList({ className }: NoteListProps) {
                   style={{ objectFit: "cover" }}
                 />
               </a>
+              <div className="absolute right-5 bottom-5 z-10">
+                <div className="bg-zinc-700 rounded-full px-4 py-1">
+                  <ArrowUpRight color="white" strokeWidth={1.5} />
+                </div>
+              </div>
             </figure>
             <div className="flex flex-col gap-4 px-12 py-8">
               <span className="text-xs font-bold text-gray-500">

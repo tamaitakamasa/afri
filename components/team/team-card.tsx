@@ -1,5 +1,6 @@
 // components/team/team-card.tsx
 import { cn } from "@/lib/utils";
+import { ArrowUpRight } from "lucide-react";
 import Image, { StaticImageData } from "next/image";
 
 interface TeamCardProps {
@@ -33,6 +34,7 @@ export default function TeamCard({
           ) : (
             <div className="h-full w-full bg-gray-200"></div>
           )}
+
         </div>
         <div className="flex flex-col justify-center gap-4 p-4">
           <hgroup className="flex flex-col gap-8">
