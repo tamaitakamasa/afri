@@ -15,7 +15,7 @@ export default async function NoteList({ className }: NoteListProps) {
 
   return (
     <div className={cn(className)}>
-      <div className="grid grid-cols-2 gap-5">
+      <div className="grid md:grid-cols-2 gap-5">
         {posts.map((post, index) => (
           <NoteCard
             key={post.id}

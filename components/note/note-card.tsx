@@ -11,7 +11,7 @@ interface NoteCardProps {
 
 export function NoteCard({ post, hasBorder = false }: NoteCardProps) {
   return (
-    <div className={hasBorder ? "border-r border-gray-200" : ""}>
+    <div className={hasBorder ? "md:border-r md:border-gray-200" : ""}>
       <figure className="relative aspect-[460/345] overflow-hidden">
         <Link
           href={post.noteUrl}
@@ -34,7 +34,7 @@ export function NoteCard({ post, hasBorder = false }: NoteCardProps) {
           </div>
         </div>
       </figure>
-      <div className="flex flex-col gap-4 px-12 py-8">
+      <div className="flex flex-col gap-4 px-8 md:px-12 py-8">
         <span className="text-xs font-bold text-gray-500">
           カテゴリー
         </span>

@@ -11,17 +11,21 @@ import PrimaryButton from "../common/primary-button";
 export default function HomeNoteSection() {
   return (
     <section id="column" className="container-xl py-40">
-      <div className="flex items-center justify-between">
+      <div className="sticky top-0 z-10 flex items-center justify-between">
         <AnimatedHeading title="Column" />
         <PrimaryButton label="View More" url="#" />
       </div>
-      <div className="mt-12">
+      <div className="mt-8 px-8 sm:mt-12 sm:px-0">
         <p>私たちの活動やプロジェクトについて発信しています。</p>
-        <Link href={NOTE_URL} target="_blank" className="mt-5 block">
+        <Link
+          href={NOTE_URL}
+          target="_blank"
+          className="mt-4 block md:mt-5"
+        >
           <Image src={noteIcon} alt="note" />
         </Link>
       </div>
-      <NoteList className="mt-30" />
+      <NoteList className="md:mt-30 mt-12" />
     </section>
   );
 }
