@@ -1,6 +1,5 @@
 // components/team/team-card.tsx
 import { cn } from "@/lib/utils";
-import { ArrowUpRight } from "lucide-react";
 import Image, { StaticImageData } from "next/image";
 
 interface TeamCardProps {
