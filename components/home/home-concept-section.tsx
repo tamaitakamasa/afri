@@ -31,7 +31,7 @@ export default function HomeConceptSection() {
 
   return (
     <section id="concept" className="container-xl py-30 relative px-8">
-      <Heading title="Concept" className="text-center" />
+      <Heading title="Concept" className="w-full grid items-center justify-center" />
       {/* 「美味しい」の解像度をあげる */}
       <div
         id="concept1"

@@ -53,15 +53,18 @@ export default function AnimatedText({
     }
   };
 
-  return (
-    <div ref={ref} className={cn("relative inline-block", className)}>
-      {/* 見えないテキスト（スペース確保用） */}
-      <span className="invisible" aria-hidden="true">
-        {children}
-      </span>
+  // wrapperに適用されるクラス
+  const wrapperClass = cn(className);
 
-      {/* アニメーションテキスト（同じ位置に絶対配置） */}
-      <div className="absolute left-0 top-0 w-full">
+  return (
+    <div ref={ref} className={cn("relative", wrapperClass)}>
+      {/* コンテンツの高さと幅を確保するプレースホルダー */}
+      <div className="invisible whitespace-pre-wrap" aria-hidden="true">
+        {children}
+      </div>
+
+      {/* アニメーションテキスト */}
+      <div className="absolute inset-0 flex items-center justify-center">
         {startAnimation ? (
           <TypeAnimation
             sequence={[
@@ -73,6 +76,7 @@ export default function AnimatedText({
             speed={speed}
             repeat={0}
             cursor={cursor}
+            className="text-center" // テキスト中央寄せの追加
           />
         ) : (
           <span className="opacity-0">{children}</span>
