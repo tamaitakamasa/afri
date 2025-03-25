@@ -7,6 +7,7 @@ interface AnimatedTextLinkProps {
   className?: string;
   target?: string;
   rel?: string;
+  onClick?: () => void;
 }
 
 export function AnimatedTextLink({
@@ -15,6 +16,7 @@ export function AnimatedTextLink({
   className = "",
   target,
   rel,
+  onClick,
 }: AnimatedTextLinkProps) {
   return (
     <Link
@@ -22,6 +24,7 @@ export function AnimatedTextLink({
       className={`relative overflow-hidden group ${className}`}
       target={target}
       rel={rel}
+      onClick={onClick}
     >
       <span className="inline-block transition-transform duration-300 group-hover:-translate-y-full">
         {children}

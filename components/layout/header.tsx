@@ -6,7 +6,7 @@ import { useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { Menu } from "lucide-react";
-import Drawer from "../common/drawer";
+import NavDrawer from "../common/drawer";
 import { Button } from "@/components/ui/button";
 
 export default function Header() {
@@ -63,7 +63,7 @@ export default function Header() {
           ref={containerRef}
         />
       )}
-      <Drawer isOpen={isDrawerOpen} onClose={() => setIsDrawerOpen(false)} />
+      <NavDrawer isOpen={isDrawerOpen} onClose={() => setIsDrawerOpen(false)} />
     </>
   );
 }

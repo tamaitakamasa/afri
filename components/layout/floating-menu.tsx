@@ -14,7 +14,7 @@ export default function FloatingMenu() {
 
   return (
     <>
-      <div className="border-border/20 bg-muted/30 fixed bottom-8 left-1/2 z-20 flex -translate-x-1/2 items-center gap-1 rounded-full border p-2 shadow-lg backdrop-blur">
+      <div className="border-border/20 bg-muted/30 fixed bottom-8 left-1/2 flex -translate-x-1/2 items-center gap-1 rounded-full border p-2 shadow-lg backdrop-blur z-50">
         <Separator
           orientation="vertical"
           className="bg-muted-foreground h-4"

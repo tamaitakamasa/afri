@@ -6,7 +6,11 @@ import { ThemeLogo } from "../common/theme-logo";
 import { AnimatedTextLink } from "../common/animated-text-link";
 import Link from "next/link";
 
-export default function Footer() {
+interface FooterProps {
+  onLinkClick?: () => void;
+}
+
+export default function Footer({ onLinkClick }: FooterProps = {}) {
   return (
     <div className="bg-muted py-24 transition-bg">
       <div className="container mx-auto px-4">
@@ -19,6 +23,7 @@ export default function Footer() {
               key={index}
               href={item.href}
               className="font-en text-sm font-black uppercase md:text-base"
+              onClick={onLinkClick}
             >
               {item.label}
             </AnimatedTextLink>
@@ -27,7 +32,7 @@ export default function Footer() {
         <Separator className="my-16" />
         <div className="flex items-center justify-between">
           <div>
-            <Link href={NOTE_URL} target="_blank">
+            <Link href={NOTE_URL} target="_blank" onClick={onLinkClick}>
               <Image src={noteIcon} alt="note" />
             </Link>
           </div>
