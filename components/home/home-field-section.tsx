@@ -2,10 +2,11 @@
 import Image from "next/image";
 import map from "/public/images/map.webp";
 import AnimatedText from "../common/animated-text";
+import ParagraphGroup from "../common/paragraph-group";
 
 export default function HomeFieldSection() {
   return (
-    <section className="relative w-full pt-40">
+    <section className="relative w-full md:pt-40">
       <div className="z-1 relative h-60 md:absolute md:inset-0 md:h-full md:w-full">
         <Image
           src={map}
@@ -15,7 +16,7 @@ export default function HomeFieldSection() {
         />
       </div>
       <div className="md:px-30 bg-background transition-bg py-30 relative z-10 ml-auto flex flex-col gap-20 md:w-7/12">
-        <div className="max-w-[32rem]">
+        <div className="px-8 md:max-w-[36rem] md:px-0">
           <AnimatedText
             wrapper="h3"
             className="text-xl font-medium"
@@ -23,7 +24,7 @@ export default function HomeFieldSection() {
           >
             淡路島というフィールド
           </AnimatedText>
-          <div className="mt-15 flex flex-col gap-10 leading-[2] tracking-wider">
+          <ParagraphGroup className="mt-15 md:mt-0">
             <p>
               淡路島は東京23区ほどの面積がある大きな島で、東は大阪湾、西は瀬戸内海、南北は鳴門海峡と明石海峡など多様な海に囲まれ、海と山がすぐそばにあるなど、自然の循環がよく感じられる島です。
             </p>
@@ -39,7 +40,7 @@ export default function HomeFieldSection() {
             <p className="text-xs text-zinc-400">
               画像出典：国土地理院 地理院地図
             </p>
-          </div>
+          </ParagraphGroup>
         </div>
       </div>
     </section>

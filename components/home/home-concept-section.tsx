@@ -9,6 +9,7 @@ import AnimatedText from "../common/animated-text";
 import AnimatedParagraph from "../common/animated-paragraph";
 import useLoading from "../common/use-loading";
 import LoadingOverlay from "../common/loading-overlay";
+import ParagraphGroup from "../common/paragraph-group";
 // import AnimatedHeading from "../common/animated-heading";
 
 export default function HomeConceptSection() {
@@ -50,7 +51,7 @@ export default function HomeConceptSection() {
   return (
     <section
       id="concept"
-      className="container-xl py-30 relative px-8"
+      className="container-xl py-30 relative px-8 md:px-0"
     >
       <LoadingOverlay isLoading={isLoading} spinnerColor="white" />
       <Heading
@@ -60,19 +61,19 @@ export default function HomeConceptSection() {
       {/* 「美味しい」の解像度をあげる */}
       <div
         id="concept1"
-        className="md:gap-15 relative mt-16 flex flex-col gap-10 md:mt-10 md:flex-row"
+        className="md:gap-18 relative mt-16 flex flex-col gap-10 md:mt-10 md:flex-row"
       >
-        <div className="md:sticky top-0 h-fit md:w-4/12 md:py-20">
+        <div className="top-0 h-screen flex-1 md:sticky flex items-center justify-center md:justify-start">
           <AnimatedText
             wrapper="h3"
-            className="text-lg md:text-xl font-medium"
+            className="text-lg font-medium md:text-xl"
             delay={500}
           >
             「美味しい」の解像度をあげる
           </AnimatedText>
         </div>
-        <div className="md:w-8/12">
-          <div className="flex flex-col gap-10 text-sm leading-[2] tracking-wider md:py-20 md:text-base">
+        <div className="md:w-[36rem]">
+          <ParagraphGroup>
             <AnimatedParagraph>
               Awaji Food Research
               Instituteは、あらゆる視点で「食」を研究、アーカイブし、50年先の食文化の創出に向けて学ぶ場を提供し、行動し続ける場です。
@@ -86,38 +87,38 @@ export default function HomeConceptSection() {
             <AnimatedParagraph delay={0.6}>
               私たちがリサーチしアーカイブする情報で、そんな「美味しい」を感じる要素に新たな切り口を増やすことができれば、こんな嬉しいことはありません。これは食に関わる、生産する人、届ける人、料理する人、食べる人、すべての人に向けての要素であり、それぞれの「美味しい」の解像度をあげることにつながるものと信じています。
             </AnimatedParagraph>
-          </div>
+          </ParagraphGroup>
         </div>
       </div>
       {/* 50年先の食文化をつくる */}
       <motion.div
         id="concept2"
-        className="md:gap-15 relative mt-16 flex flex-col gap-10 md:mt-10 md:flex-row"
+        className="md:gap-18 relative mt-16 flex flex-col gap-10 md:mt-10 md:flex-row"
         ref={ref}
         transition={{ duration: 0.5 }}
       >
-        <div className="md:sticky top-0 h-fit md:w-4/12 md:py-20">
+        <div className="top-0 flex-1 md:sticky flex items-center justify-center md:justify-start">
           <AnimatedText
             wrapper="h3"
-            className="text-xl font-medium"
+            className="text-lg font-medium md:text-xl"
             delay={500}
           >
             50年先の食文化をつくる
           </AnimatedText>
         </div>
-        <div className="md:w-8/12">
-          <div className="flex flex-col gap-10 text-sm leading-[2] tracking-wider md:py-20 md:text-base">
+        <div className="md:w-[36rem]">
+          <ParagraphGroup>
             <AnimatedParagraph>
               20年で地域は大きく変わります。
-              <br />
               淡路島もこの20年でそのイメージも環境も大きく変化してきました。では次の20年、淡路島に「食」を通してどのような変化をもたらすことができるのでしょうか。
-              <br />
+            </AnimatedParagraph>
+            <AnimatedParagraph>
               さらにいうなら50年先にどのような「食文化」をつくることができるのでしょうか。文化を形成するまでに、行動、習慣、文化という流れがあるとして、まずその行動をおこせる場をここにつくっていきます。私たちだけでは難しいことばかりです。この場を通して時間をかけて、一緒に「美味しい」の解像度を高め合える仲間を作っていけたらと思います。
             </AnimatedParagraph>
             <AnimatedParagraph delay={0.2}>
               たくさんの「美味しい」を感じられる未来へ。
             </AnimatedParagraph>
-          </div>
+          </ParagraphGroup>
         </div>
       </motion.div>
     </section>
