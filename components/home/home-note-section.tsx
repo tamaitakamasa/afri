@@ -11,7 +11,7 @@ import PrimaryButton from "../common/primary-button";
 export default function HomeNoteSection() {
   return (
     <section id="column" className="container-xl py-20">
-      <div className="sticky top-0 z-10 flex items-center justify-between px-8 sm:px-0">
+      <div className="sticky top-0 z-20 flex items-center justify-between px-8 py-4 sm:px-0 sm:py-8">
         <AnimatedHeading title="Column" />
         <PrimaryButton label="View More" url="#" />
       </div>
