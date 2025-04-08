@@ -35,18 +35,18 @@ export default function HomeConceptSection() {
     return () => clearTimeout(timer);
   }, [startLoading, stopLoading]);
 
-  // useEffect(() => {
-  //   // セクションが表示されたときだけ、前のテーマを記憶してダークモードに
-  //   if (isInView && !previousTheme) {
-  //     setPreviousTheme(theme);
-  //     setTheme("dark");
-  //   }
-  //   // セクションから離れたら、保存していた元のテーマに戻す
-  //   else if (!isInView && previousTheme) {
-  //     setTheme(previousTheme);
-  //     setPreviousTheme(undefined);
-  //   }
-  // }, [isInView, theme, previousTheme, setTheme]);
+  useEffect(() => {
+    // セクションが表示されたときだけ、前のテーマを記憶してダークモードに
+    if (isInView && !previousTheme) {
+      setPreviousTheme(theme);
+      setTheme("dark");
+    }
+    // セクションから離れたら、保存していた元のテーマに戻す
+    else if (!isInView && previousTheme) {
+      setTheme(previousTheme);
+      setPreviousTheme(undefined);
+    }
+  }, [isInView, theme, previousTheme, setTheme]);
 
   return (
     <section

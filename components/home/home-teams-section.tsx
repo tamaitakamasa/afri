@@ -8,7 +8,7 @@ export default function HomeTeamsSection() {
     <section id="team" className="bg-muted py-20 transition-bg">
       <div className="mx-auto max-w-[1000px]">
         <div className="relative md:flex w-full gap-40">
-          <div className="sticky top-0 z-10 h-fit md:py-20">
+          <div className="sticky top-0 z-20 h-fit sm:block sm:px-0 sm:py-8">
             <AnimatedHeading title="Team" className="" />
           </div>
           <div className="py-20">
