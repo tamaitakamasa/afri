@@ -13,7 +13,7 @@ export default function HomeNoteSection() {
     <section id="column" className="container-xl py-20">
       <div className="sticky top-0 z-20 flex items-center justify-between px-8 py-4 sm:relative sm:px-0 sm:py-8">
         <Heading title="Column" />
-        <PrimaryButton label="View More" url="#" />
+        <PrimaryButton label="View More" url="/column" />
       </div>
       <div className="mt-8 px-8 sm:mt-12 sm:px-0">
         <p>私たちの活動やプロジェクトについて発信しています。</p>
@@ -25,7 +25,7 @@ export default function HomeNoteSection() {
           <Image src={noteIcon} alt="note" />
         </Link>
       </div>
-      <NoteList className="md:mt-30 mt-12" />
+      <NoteList className="md:mt-30 mt-12" limit={2} />
     </section>
   );
 }
