@@ -35,7 +35,6 @@ export function NoteListWithFilter({
     <div className={cn(className)}>
       {showFilter && (
         <NoteFilter
-          posts={posts}
           selectedTag={selectedTag}
           onTagSelect={setSelectedTag}
         />
