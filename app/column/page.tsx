@@ -1,12 +1,15 @@
 import { PageLayout } from "@/components/layout/page-layout";
-import NoteList from "@/components/note/note-list";
-import React from "react";
+import { NoteListWithFilter } from "@/components/note/note-list-with-filter";
+import { getAllPosts } from "@/lib/note";
 
-export default function Page() {
+export default async function Page() {
+  const noteData = await getAllPosts();
+  const posts = noteData.data.contents;
+
   return (
     <PageLayout title="Column">
       <div className="py-10">
-        <NoteList />
+        <NoteListWithFilter posts={posts} />
       </div>
     </PageLayout>
   );

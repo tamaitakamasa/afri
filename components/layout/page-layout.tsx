@@ -19,7 +19,7 @@ export function PageLayout({
   return (
     <div className={cn("py-50", className)}>
       <div className={cn("container mx-auto px-4 pb-40 border-b", titleClassName)}>
-        <h1 className="font-en text-4xl font-bold uppercase tracking-widest text-center">
+        <h1 className="font-en text-[50px] font-bold uppercase tracking-widest text-center">
           {title}
         </h1>
       </div>
