@@ -24,7 +24,7 @@ export default function HomeFieldSection() {
           >
             淡路島というフィールド
           </AnimatedText>
-          <ParagraphGroup className="mt-15 md:mt-0">
+          <ParagraphGroup className="mt-15">
             <p>
               淡路島は東京23区ほどの面積がある大きな島で、東は大阪湾、西は瀬戸内海、南北は鳴門海峡と明石海峡など多様な海に囲まれ、海と山がすぐそばにあるなど、自然の循環がよく感じられる島です。
             </p>
