@@ -18,11 +18,11 @@ export default function PrimaryButton({
 }: PrimaryButtonProps) {
   return (
     <Button
-      className="hover:!bg-primary group h-10 cursor-pointer rounded-full !px-4 sm:h-12 sm:!px-6"
+      className="hover:!bg-primary group cursor-pointer rounded-full !px-4 sm:h-12 sm:!px-6"
       asChild
     >
       <Link href={url} target={target}>
-        <div className="relative overflow-hidden">
+        <div className="relative overflow-hidden leading-none">
           <span className="font-en inline-block text-xs font-bold uppercase transition-transform duration-300 group-hover:-translate-y-full sm:text-sm">
             {label}
           </span>

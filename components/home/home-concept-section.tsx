@@ -63,16 +63,12 @@ export default function HomeConceptSection() {
         id="concept1"
         className="md:gap-18 relative mt-16 flex flex-col gap-10 md:mt-10 md:flex-row"
       >
-        <div className="top-0 flex h-screen flex-1 items-center justify-center md:sticky md:justify-start">
-          <AnimatedText
-            wrapper="h3"
-            className="text-lg font-medium md:text-xl"
-            delay={500}
-          >
+        <div className="relative flex-1">
+          <h3 className="sticky top-0 text-lg font-medium md:py-20 md:text-xl">
             「美味しい」の解像度をあげる
-          </AnimatedText>
+          </h3>
         </div>
-        <div className="md:w-[36rem]">
+        <div className="md:my-20 md:w-[36rem]">
           <ParagraphGroup>
             <AnimatedParagraph>
               Awaji Food Research
@@ -97,16 +93,12 @@ export default function HomeConceptSection() {
         ref={ref}
         transition={{ duration: 0.5 }}
       >
-        <div className="top-0 flex flex-1 items-center justify-center md:sticky md:justify-start">
-          <AnimatedText
-            wrapper="h3"
-            className="text-lg font-medium md:text-xl"
-            delay={500}
-          >
+        <div className="relative flex-1">
+          <h3 className="sticky top-0 text-lg font-medium md:py-20 md:text-xl">
             50年先の食文化をつくる
-          </AnimatedText>
+          </h3>
         </div>
-        <div className="md:w-[36rem]">
+        <div className="md:w-[36rem] md:my-20">
           <ParagraphGroup>
             <AnimatedParagraph>
               20年で地域は大きく変わります。

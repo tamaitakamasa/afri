@@ -64,7 +64,7 @@ export default function ContactForm() {
 
 	return (
 		<Form {...form}>
-			<form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+			<form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-8">
 				{submitStatus.type && <div className={`p-4 rounded-md ${submitStatus.type === 'success' ? 'bg-green-50 text-green-800' : 'bg-red-50 text-red-800'}`}>{submitStatus.message}</div>}
 
 				<FormField
@@ -127,17 +127,17 @@ export default function ContactForm() {
 					control={form.control}
 					name="privacyPolicy"
 					render={({ field }) => (
-						<FormItem className="flex flex-row items-start space-x-3 space-y-0">
+						<FormItem className="flex flex-row items-start space-y-0">
 							<FormControl>
 								<Checkbox checked={field.value} onCheckedChange={field.onChange} />
 							</FormControl>
 							<div className="space-y-1 leading-none">
 								<FormLabel>
 									<span>
-										利用規約に同意する
+										プライバシーポリシーに同意する
 									</span>
-									<a href="/terms" target="_blank" rel="noopener noreferrer" className="ml-1 text-primary underline hover:no-underline">
-										（利用規約を読む）
+									<a href="/privacy" target="_blank" rel="noopener noreferrer" className="ml-1 text-primary underline hover:no-underline">
+										（プライバシーポリシーを読む）
 									</a>
 								</FormLabel>
 								<FormMessage className='mt-4' />

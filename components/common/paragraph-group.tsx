@@ -15,7 +15,7 @@ export default function ParagraphGroup({
   return (
     <div
       className={cn(
-        "flex flex-col gap-10 text-sm leading-[2] md:text-base md:py-20",
+        "flex flex-col gap-10 text-sm leading-[2] md:text-base",
         className
       )}
     >
