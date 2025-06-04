@@ -33,11 +33,11 @@ export function NoteCard({ post }: NoteCardProps) {
           </div>
         </div>
       </figure>
-      <div className="flex flex-col gap-4 px-6 md:px-10 py-6 md:py-8">
+      <div className="flex flex-col gap-4 px-4 md:px-10 py-6 md:py-8">
         <span className="text-xs font-bold text-gray-400">
           カテゴリー
         </span>
-        <h2 className="md:line-clamp-2 text-xl tracking-wider">
+        <h2 className="md:line-clamp-2 text-lg md:text-xl tracking-wider">
           <a href={post.noteUrl} target="_blank">
             {post.name}
           </a>
