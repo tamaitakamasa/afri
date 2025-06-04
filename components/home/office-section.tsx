@@ -1,6 +1,7 @@
 import Image from "next/image";
 
-import officeImage from "../../public/images/hub.webp";
+import officeImage from "../../public/images/hub.jpg";
+import { CustomLink } from "../common/custom-link";
 
 export default function OfficeSection() {
   return (
@@ -8,22 +9,31 @@ export default function OfficeSection() {
       <div className="container mx-auto px-4">
         <div className="flex flex-col items-center">
           {/* オフィス画像 */}
-          <div className="relative mb-16 aspect-[4/3] w-full max-w-3xl">
+          <div className="relative mb-16 w-full max-w-[640px]">
             <Image
               src={officeImage}
               alt="Office"
-              fill
-              className="object-cover"
+							quality={100}
+							className="w-full"
+              // fill
+              // className="object-cover"
             />
           </div>
 
           {/* オフィス情報 */}
-          <div className="flex flex-col items-center text-center gap-15">
+          <div className="gap-15 flex flex-col items-center text-center">
             <div className="flex flex-col gap-2">
               <h3 className="font-en mb-2 text-xs font-black tracking-[0.15em]">
                 OFFICE
               </h3>
-              <p className="text-sm">株式会社シマトワークス</p>
+              <p className="text-sm">
+                <CustomLink
+                  href="https://shimatoworks.jp"
+                  isExternal={true}
+                >
+                  株式会社シマトワークス
+                </CustomLink>
+              </p>
             </div>
             <div className="flex flex-col gap-2">
               <h3 className="font-en mb-2 text-xs font-black tracking-[0.15em]">
@@ -31,8 +41,14 @@ export default function OfficeSection() {
               </h3>
               <p className="text-sm leading-[1.8]">
                 〒656-0025 <br />
-                兵庫県淡路市本町7丁目1-32<br />
-								Workation Hub 紺屋町
+                兵庫県淡路市本町7丁目1-32 Workation Hub 紺屋町
+								<br />
+								<CustomLink
+									href="https://maps.app.goo.gl/KokPESdk11Vx12de8"
+									isExternal={true}
+								>
+									Google Map
+								</CustomLink>
               </p>
             </div>
             <div className="flex flex-col gap-2">
@@ -40,12 +56,11 @@ export default function OfficeSection() {
                 MAIL
               </h3>
               <p className="text-sm">
-                <a
+                <CustomLink
                   href="mailto:info@shimatoworks.jp"
-                  className="hover:underline"
                 >
                   info@shimatoworks.jp
-                </a>
+                </CustomLink>
               </p>
             </div>
           </div>

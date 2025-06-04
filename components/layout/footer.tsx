@@ -5,6 +5,7 @@ import Image from "next/image";
 import { ThemeLogo } from "../common/theme-logo";
 import { AnimatedTextLink } from "../common/animated-text-link";
 import Link from "next/link";
+import { CustomLink } from "../common/custom-link";
 
 interface FooterProps {
   onLinkClick?: () => void;
@@ -37,7 +38,7 @@ export default function Footer({ onLinkClick }: FooterProps = {}) {
             </Link>
           </div>
           <div className="font-en flex gap-8 text-xs uppercase">
-            <span className="font-black">Privacy Policy</span>
+            <CustomLink href="/privacy" className="font-black">Privacy Policy</CustomLink>
             <div className="text-gray-500">
               © 2025 Awaji Food Research Institute
             </div>
