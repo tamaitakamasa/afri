@@ -150,7 +150,7 @@ export default function Header() {
               className="flex cursor-pointer flex-col items-center justify-center gap-0 text-current hover:bg-transparent"
               aria-label="メニューを開く"
             >
-              <Menu strokeWidth={1} className="w-6 h-6 md:w-9 md:h-9" />
+              <Menu strokeWidth={1} className="w-7 h-7 md:w-9 md:h-9" />
               <span className="font-en text-[8px] md:text-[10px] font-bold uppercase">
                 menu
               </span>
