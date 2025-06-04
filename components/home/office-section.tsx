@@ -5,7 +5,7 @@ import { CustomLink } from "../common/custom-link";
 
 export default function OfficeSection() {
   return (
-    <div className="w-full py-24">
+    <div className="w-full py-20 lg:py-30">
       <div className="container mx-auto px-4">
         <div className="flex flex-col items-center">
           {/* オフィス画像 */}
@@ -13,15 +13,15 @@ export default function OfficeSection() {
             <Image
               src={officeImage}
               alt="Office"
-							quality={100}
-							className="w-full"
+              quality={100}
+              className="w-full"
               // fill
               // className="object-cover"
             />
           </div>
 
           {/* オフィス情報 */}
-          <div className="gap-15 flex flex-col items-center text-center">
+          <div className="md:gap-15 flex flex-col items-center gap-10 text-center">
             <div className="flex flex-col gap-2">
               <h3 className="font-en mb-2 text-xs font-black tracking-[0.15em]">
                 OFFICE
@@ -41,14 +41,15 @@ export default function OfficeSection() {
               </h3>
               <p className="text-sm leading-[1.8]">
                 〒656-0025 <br />
-                兵庫県淡路市本町7丁目1-32 Workation Hub 紺屋町
-								<br />
-								<CustomLink
-									href="https://maps.app.goo.gl/KokPESdk11Vx12de8"
-									isExternal={true}
-								>
-									Google Map
-								</CustomLink>
+                兵庫県淡路市本町7丁目1-32 <br />
+                Workation Hub 紺屋町
+                <br />
+                <CustomLink
+                  href="https://maps.app.goo.gl/KokPESdk11Vx12de8"
+                  isExternal={true}
+                >
+                  Google Map
+                </CustomLink>
               </p>
             </div>
             <div className="flex flex-col gap-2">
@@ -56,9 +57,7 @@ export default function OfficeSection() {
                 MAIL
               </h3>
               <p className="text-sm">
-                <CustomLink
-                  href="mailto:info@shimatoworks.jp"
-                >
+                <CustomLink href="mailto:info@shimatoworks.jp">
                   info@shimatoworks.jp
                 </CustomLink>
               </p>

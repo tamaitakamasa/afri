@@ -1,11 +1,13 @@
 // components/home/home-concept-section.tsx
+import { cn } from "@/lib/utils";
 import Heading from "../common/heading";
+import ParagraphGroup from "../common/paragraph-group";
 
 // ページ内コンポーネント - コンセプトセクションのタイトル表示用
 function ConceptTitle({ title }: { title: string }) {
   return (
     <div className="relative flex-1">
-      <h3 className="top-0 text-lg font-medium md:sticky md:py-20 md:text-xl">
+      <h3 className="top-0 text-lg font-medium lg:sticky lg:py-20 lg:text-xl">
         {title}
       </h3>
     </div>
@@ -15,10 +17,10 @@ function ConceptTitle({ title }: { title: string }) {
 // ページ内コンポーネント - コンセプトセクションのコンテンツ表示用
 function ConceptContent({ children }: { children: React.ReactNode }) {
   return (
-    <div className="md:my-20 md:w-[36rem]">
-      <div className="flex flex-col gap-8 text-sm leading-[2] md:gap-10 md:text-base">
+    <div className="lg:my-20 lg:w-[36rem]">
+      <ParagraphGroup>
         {children}
-      </div>
+      </ParagraphGroup>
     </div>
   );
 }
@@ -38,9 +40,10 @@ function ConceptSection({
   return (
     <div
       id={id}
-      className={`gap-8 md:gap-18 relative flex flex-col md:flex-row ${
-        isFirst ? "mt-10" : "mt-16 md:mt-10"
-      }`}
+      className={cn(
+        "lg:gap-18 relative flex flex-col gap-8 lg:flex-row",
+        isFirst ? "mt-10" : "mt-16 lg:mt-10",
+      )}
     >
       <ConceptTitle title={title} />
       <ConceptContent>{children}</ConceptContent>
@@ -52,7 +55,7 @@ export default function HomeConceptSection() {
   return (
     <section
       id="concept"
-      className="container-xl py-20 md:py-30 relative px-8 md:px-0"
+      className="container-xl lg:py-30 relative px-8 py-20 lg:px-0"
     >
       <Heading
         title="Concept"
