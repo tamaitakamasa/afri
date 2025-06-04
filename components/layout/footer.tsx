@@ -13,12 +13,12 @@ interface FooterProps {
 
 export default function Footer({ onLinkClick }: FooterProps = {}) {
   return (
-    <div className="bg-muted py-24 transition-bg">
+    <div className="bg-muted transition-bg py-24">
       <div className="container mx-auto px-4">
         <div className="max-w-[70vi]">
-          <ThemeLogo width={300} />
+          <ThemeLogo className="w-[200px] md:w-[300px]" />
         </div>
-        <div className="md:mt-30 mt-12 flex flex-wrap gap-6 md:gap-8">
+        <div className="md:mt-30 mt-12 flex flex-wrap gap-x-6 gap-y-3 md:gap-8">
           {NAVI_ITEMS.map((item, index) => (
             <AnimatedTextLink
               key={index}
@@ -30,16 +30,22 @@ export default function Footer({ onLinkClick }: FooterProps = {}) {
             </AnimatedTextLink>
           ))}
         </div>
-        <Separator className="my-16" />
-        <div className="flex items-center justify-between">
+        <Separator className="my-12 md:my-16" />
+        <div className="md:flex items-center justify-between">
           <div>
-            <Link href={NOTE_URL} target="_blank" onClick={onLinkClick}>
+            <Link
+              href={NOTE_URL}
+              target="_blank"
+              onClick={onLinkClick}
+            >
               <Image src={noteIcon} alt="note" />
             </Link>
           </div>
-          <div className="font-en flex gap-8 text-xs uppercase">
-            <CustomLink href="/privacy" className="font-black">Privacy Policy</CustomLink>
-            <div className="text-gray-500">
+          <div className="mt-4 font-en text-xs uppercase md:mt-0 md:flex md:gap-8">
+            <CustomLink href="/privacy" className="font-black">
+              Privacy Policy
+            </CustomLink>
+            <div className="text-gray-500 mt-12 md:mt-0">
               © 2025 Awaji Food Research Institute
             </div>
           </div>

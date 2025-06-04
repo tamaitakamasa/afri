@@ -124,7 +124,7 @@ export default function Header() {
       <header
         ref={headerRef}
         className={cn(
-          "fixed top-0 z-20 w-full pt-8 hidden md:block transition-all duration-300 ease-in-out",
+          "fixed top-0 z-20 w-full pt-8 md:block transition-all duration-300 ease-in-out",
           isVisible ? "translate-y-0" : "-translate-y-full",
           isOpaque ? "opacity-100" : "opacity-0"
         )}
@@ -135,13 +135,13 @@ export default function Header() {
               Awaji Food Research Institute
             </span>
             <Link href="/">
-              <ThemeLogo />
+              <ThemeLogo className="w-[150px] md:w-[200px]" />
             </Link>
           </h1>
           <div className="flex flex-row items-center gap-8">
             <Link
               href="/contact"
-              className="font-en border-1 rounded-full border-zinc-800 px-6 py-2 text-sm font-bold uppercase backdrop-blur-sm dark:border-zinc-100"
+              className="hidden font-en border-1 rounded-full border-zinc-800 px-6 py-2 text-sm font-bold uppercase backdrop-blur-sm dark:border-zinc-100 md:block"
             >
               Contact
             </Link>
