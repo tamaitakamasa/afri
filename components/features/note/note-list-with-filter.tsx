@@ -37,14 +37,14 @@ export function NoteListWithFilter({
         <NoteFilter
           selectedTag={selectedTag}
           onTagSelect={setSelectedTag}
+					className="mb-10 md:mb-16"
         />
       )}
       <div className="grid md:grid-cols-2 gap-5">
-        {displayPosts.map((post, index) => (
+        {displayPosts.map((post) => (
           <NoteCard
             key={post.id}
             post={post}
-            hasBorder={index % 2 === 0}
           />
         ))}
       </div>

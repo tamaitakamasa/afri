@@ -19,11 +19,10 @@ export default async function NoteList({ className, limit }: NoteListProps) {
   return (
     <div className={cn(className)}>
       <div className="grid md:grid-cols-2 gap-5">
-        {displayPosts.map((post, index) => (
+        {displayPosts.map((post) => (
           <NoteCard
             key={post.id}
             post={post}
-            hasBorder={index % 2 === 0}
           />
         ))}
       </div>

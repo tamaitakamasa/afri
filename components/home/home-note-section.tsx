@@ -1,7 +1,7 @@
 // components/home/home-note-section.tsx
 import Image from "next/image";
 // import Heading from "../common/heading";
-import NoteList from "../note/note-list";
+import NoteList from "../features/note/note-list";
 import noteIcon from "@/public/images/note_icon.svg";
 import Link from "next/link";
 import { NOTE_URL } from "@/constants/site";

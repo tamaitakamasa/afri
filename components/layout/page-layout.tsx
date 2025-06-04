@@ -23,7 +23,7 @@ export function PageLayout({
           {title}
         </h1>
       </div>
-      <div className={cn("container-xl mt-20", contentClassName)}>
+      <div className={cn("container-xl mt-10 md:mt-20", contentClassName)}>
         {children}
       </div>
     </div>

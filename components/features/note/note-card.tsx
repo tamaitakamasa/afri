@@ -6,12 +6,11 @@ import Link from "next/link";
 
 interface NoteCardProps {
   post: NoteArticle;
-  hasBorder?: boolean;
 }
 
-export function NoteCard({ post, hasBorder = false }: NoteCardProps) {
+export function NoteCard({ post }: NoteCardProps) {
   return (
-    <div className={hasBorder ? "md:border-r md:border-gray-200" : ""}>
+    <div className="md:border-r md:border-gray-200">
       <figure className="relative aspect-[460/345] overflow-hidden">
         <Link
           href={post.noteUrl}
@@ -34,16 +33,16 @@ export function NoteCard({ post, hasBorder = false }: NoteCardProps) {
           </div>
         </div>
       </figure>
-      <div className="flex flex-col gap-4 px-8 md:px-12 py-8">
-        <span className="text-xs font-bold text-gray-500">
+      <div className="flex flex-col gap-4 px-6 md:px-10 py-6 md:py-8">
+        <span className="text-xs font-bold text-gray-400">
           カテゴリー
         </span>
-        <h2 className="line-clamp-2 text-xl tracking-wider">
+        <h2 className="md:line-clamp-2 text-xl tracking-wider">
           <a href={post.noteUrl} target="_blank">
             {post.name}
           </a>
         </h2>
-        <div className="mt-5 flex flex-wrap gap-1.5">
+        <div className="mt-4 md:mt-5 flex flex-wrap gap-1.5">
           {post.hashtags.map((tag, index) => (
             <span key={index} className="text-xs tracking-wider">
               {tag.hashtag.name}

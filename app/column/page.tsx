@@ -1,5 +1,5 @@
 import { PageLayout } from "@/components/layout/page-layout";
-import { NoteListWithFilter } from "@/components/note/note-list-with-filter";
+import { NoteListWithFilter } from "@/components/features/note/note-list-with-filter";
 import { getAllPosts } from "@/lib/note";
 
 export default async function Page() {
@@ -8,9 +8,7 @@ export default async function Page() {
 
   return (
     <PageLayout title="Column">
-      <div className="py-10">
-        <NoteListWithFilter posts={posts} />
-      </div>
+      <NoteListWithFilter posts={posts} />
     </PageLayout>
   );
 }
