@@ -124,7 +124,7 @@ export default function Header() {
       <header
         ref={headerRef}
         className={cn(
-          "fixed top-0 z-20 w-full pt-8 md:block transition-all duration-300 ease-in-out",
+          "fixed top-0 z-20 w-full pt-6 md:pt-8 md:block transition-all duration-300 ease-in-out",
           isVisible ? "translate-y-0" : "-translate-y-full",
           isOpaque ? "opacity-100" : "opacity-0"
         )}
@@ -150,8 +150,8 @@ export default function Header() {
               className="flex cursor-pointer flex-col items-center justify-center gap-0 text-current hover:bg-transparent"
               aria-label="メニューを開く"
             >
-              <Menu size={36} strokeWidth={1} />
-              <span className="font-en text-[10px] font-bold uppercase">
+              <Menu strokeWidth={1} className="w-6 h-6 md:w-9 md:h-9" />
+              <span className="font-en text-[8px] md:text-[10px] font-bold uppercase">
                 menu
               </span>
             </div>
