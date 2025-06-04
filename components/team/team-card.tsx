@@ -51,7 +51,7 @@ export default function TeamCard({
         </div>
       </div>
       <div className="mt-8">
-        <p className="whitespace-pre-wrap px-8 text-sm leading-6 tracking-wider md:px-0">
+        <p className="whitespace-pre-wrap text-xs md:text-sm leading-6 tracking-wider">
           {description}
         </p>
       </div>
