@@ -37,7 +37,7 @@ export function NoteCard({ post }: NoteCardProps) {
         <span className="text-xs font-bold text-gray-400">
           カテゴリー
         </span>
-        <h2 className="md:line-clamp-2 text-lg md:text-xl tracking-wider">
+        <h2 className="md:line-clamp-2 text-lg md:text-xl font-medium md:font-normal tracking-wider">
           <a href={post.noteUrl} target="_blank">
             {post.name}
           </a>

@@ -11,11 +11,11 @@ import Heading from "../common/heading";
 export default function HomeNoteSection() {
   return (
     <section id="column" className="container-xl py-16 md:py-20">
-      <div className="md:sticky top-0 z-20 flex items-center justify-between md:px-8 py-4 sm:relative sm:px-0 sm:py-8">
+      <div className="xl:sticky top-0 z-20 flex items-center justify-between py-4 sm:relative sm:px-0 sm:py-8">
         <Heading title="Column" />
         <PrimaryButton label="View More" url="/column" />
       </div>
-      <div className="mt-8 md:px-8 sm:mt-12 sm:px-0">
+      <div className="mt-4 sm:mt-6">
         <p className="text-sm md:text-base">私たちの活動やプロジェクトについて発信しています。</p>
         <Link
           href={NOTE_URL}
@@ -25,7 +25,7 @@ export default function HomeNoteSection() {
           <Image src={noteIcon} alt="note" />
         </Link>
       </div>
-      <NoteList className="md:mt-30 mt-12" limit={2} />
+      <NoteList className="relative md:mt-30 mt-12 xl:-right-24" limit={2} />
     </section>
   );
 }
