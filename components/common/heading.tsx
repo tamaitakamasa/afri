@@ -1,5 +1,4 @@
 import { cn } from "@/lib/utils";
-import AnimatedText from "./animated-text";
 
 interface HeadingProps {
   title: string;
@@ -8,13 +7,13 @@ interface HeadingProps {
 
 export default function Heading({ title, className }: HeadingProps) {
   return (
-    <AnimatedText
+    <h2
       className={cn(
         className,
-        "font-en text-3xl font-bold uppercase tracking-widest",
+        "font-en text-lg sm:text-3xl font-bold uppercase tracking-widest",
       )}
     >
       {title}
-    </AnimatedText>
+    </h2>
   );
 }

@@ -6,17 +6,20 @@ import { NoteCard } from "./note-card";
 
 interface NoteListProps {
   className?: string;
+  limit?: number;
 }
 
-export default async function NoteList({ className }: NoteListProps) {
+export default async function NoteList({ className, limit }: NoteListProps) {
   const noteData = await getAllPosts();
   const posts: NoteArticle[] = noteData.data.contents;
-  // console.log(posts);
+
+  // limitが指定されている場合は、その件数まで制限
+  const displayPosts = limit ? posts.slice(0, limit) : posts;
 
   return (
     <div className={cn(className)}>
       <div className="grid md:grid-cols-2 gap-5">
-        {posts.map((post, index) => (
+        {displayPosts.map((post, index) => (
           <NoteCard
             key={post.id}
             post={post}
@@ -24,6 +27,13 @@ export default async function NoteList({ className }: NoteListProps) {
           />
         ))}
       </div>
+      {limit && posts.length > limit && (
+        <div className="mt-8 text-center">
+          <p className="text-sm text-gray-600">
+            {limit}件 / 全{posts.length}件を表示
+          </p>
+        </div>
+      )}
     </div>
   );
 }

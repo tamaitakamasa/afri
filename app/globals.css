@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 @plugin "tailwindcss-animate";
+@plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -140,6 +141,6 @@
   }
 
   .container-xl {
-    @apply mx-auto max-w-[1000px];
+    @apply mx-auto max-w-[1000px] px-4;
   }
 }

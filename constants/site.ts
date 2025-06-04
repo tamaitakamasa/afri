@@ -8,10 +8,10 @@ export const SITE_DESCRIPTION = "淡路島（兵庫県）で、「食」をテ�
 export const NOTE_URL = "https://note.com/foodtrail";
 export const NOTE_API_BASE_URL = 'https://note.com/api/v2/creators/foodtrail/';
 export const NAVI_ITEMS = [
-	{ label: "Home", href: "/" },
+	// { label: "Home", href: "/" },
 	{ label: "Concept", href: "/#concept" },
 	{ label: "Team", href: "/#team" },
-	{ label: "Column", href: "/#column" },
+	{ label: "Column", href: "/column" },
 	{ label: "Academy", href: "/" },
 	{ label: "Join Us", href: "/#join" },
 	{ label: "Contact", href: "/contact" },
