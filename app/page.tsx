@@ -9,11 +9,13 @@ import HomeVideo from "@/components/home/home-video";
 import HomeNoteSection from "@/components/home/home-note-section";
 import HomeTeamsSection from "@/components/home/home-teams-section";
 import OfficeSection from "@/components/home/office-section";
+import Hero from "@/components/home/hero";
 // import VideoPlayer from "@/components/features/video/video-player";
 
 export default function Home() {
   return (
     <div className="w-full">
+			<Hero />
 			<HomeVideo />
       {/* <HomeHero /> */}
 			<HomeConceptSection />
