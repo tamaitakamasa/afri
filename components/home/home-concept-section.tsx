@@ -52,7 +52,7 @@ export default function HomeConceptSection() {
   return (
     <section
       id="concept"
-      className="container-xl py-30 relative px-8 md:px-0"
+      className="container-xl py-20 md:py-30 relative px-8 md:px-0"
     >
       <Heading
         title="Concept"
