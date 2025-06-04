@@ -132,11 +132,12 @@ export default function ContactForm() {
 								<Checkbox checked={field.value} onCheckedChange={field.onChange} />
 							</FormControl>
 							<div className="space-y-1 leading-none">
-								<FormLabel>
+								<FormLabel className="block md:flex">
 									<span>
 										プライバシーポリシーに同意する
 									</span>
-									<a href="/privacy" target="_blank" rel="noopener noreferrer" className="ml-1 text-primary underline hover:no-underline">
+									<br className="md:hidden" />
+									<a href="/privacy" target="_blank" rel="noopener noreferrer" className="inline-block mt-2 md:mt-0 ml-1 text-primary underline hover:no-underline">
 										（プライバシーポリシーを読む）
 									</a>
 								</FormLabel>
