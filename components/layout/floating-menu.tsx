@@ -19,7 +19,7 @@ export default function FloatingMenu() {
     <>
       <div
         className={cn(
-          "border-border/20 bg-muted/30 fixed bottom-8 left-1/2 flex -translate-x-1/2 items-center gap-1 rounded-full border p-1 shadow-lg backdrop-blur z-50 transition-transform duration-300 ease-in-out",
+          "md:hidden border-border/20 bg-muted/30 fixed bottom-8 left-1/2 flex -translate-x-1/2 items-center gap-1 rounded-full border p-1 shadow-lg backdrop-blur z-50 transition-transform duration-300 ease-in-out",
           isVisible ? "translate-y-0" : "translate-y-28"
         )}
       >
