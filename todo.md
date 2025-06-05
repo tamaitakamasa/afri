@@ -135,6 +135,24 @@
   - シンプルな設計でメンテナンス性向上
   - 完了時間: 30分
 
+- [x] FloatingMenuスクロールアニメーションの実装
+  - 上スクロール時に画面下から現れるアニメーション機能の追加
+  - headerと同様のスクロール検知ロジックの実装
+  - translate-y-fullからtranslate-y-0へのスムーズなトランジション
+  - 初期状態を非表示に設定して自然な動作を実現
+  - パフォーマンス最適化（passive: trueスクロールリスナー）
+  - ページ遷移時の状態リセット機能
+  - 完了時間: 25分
+
+- [x] スクロール検知カスタムフックの共通化
+  - useScrollDirectionカスタムフックの作成（hooks/use-scroll-direction.ts）
+  - 設定可能なオプション（scrollBuffer、scrollTimeout、initialVisible）
+  - TypeScript型定義の実装（UseScrollDirectionOptions、UseScrollDirectionReturn）
+  - headerとfloating-menuでの重複コード削除
+  - パフォーマンス最適化とメモリリーク対策
+  - スクロール方向、位置、表示状態の統一的な管理
+  - 完了時間: 30分
+
 - [ ] NoteFilterボタンのダークモード対応（チラつき修正）
   - 固定色からCSS変数ベースの色への変更
   - ダークモード変異体の実装

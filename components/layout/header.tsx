@@ -8,35 +8,25 @@ import { Menu } from "lucide-react";
 import NavDrawer from "../common/drawer";
 import { cn } from "../../lib/utils";
 import { ThemeToggleButton } from "../ui/theme-toggle-button";
-import { ContactButton } from "../ui/contact-button";
+import { useScrollDirection } from "../../hooks/use-scroll-direction";
 
 export default function Header() {
   const pathname = usePathname();
   const isHomePage = pathname === "/";
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  // ページ遷移時に確実にリセットされるように初期化
-  const [isVisible, setIsVisible] = useState(true);
   // opacity制御用のstate（Tailwindクラス用）
   const [isOpaque, setIsOpaque] = useState(true);
 
   const headerRef = useRef<HTMLElement>(null);
-  const lastScrollY = useRef(0);
-  const scrollBuffer = 100; // スクロール判定のバッファ値（ピクセル）
-  const lastScrollTime = useRef(Date.now());
-  const scrollTimeout = 150; // スクロール判定のタイムアウト（ミリ秒）
 
-  // ページ遷移時に状態を即座にリセット
-  useEffect(() => {
-    // 表示状態を強制的にリセット
-    setIsVisible(true);
-    // opacity状態も適切に設定
-    setIsOpaque(!isHomePage);
-    // スクロール関連の状態もリセット
-    lastScrollY.current = 0;
-    lastScrollTime.current = Date.now();
-  }, [pathname, isHomePage]);
+  // カスタムフックでスクロール方向検知
+  const { isVisible } = useScrollDirection({
+    scrollBuffer: 100,
+    scrollTimeout: 150,
+    initialVisible: true, // headerは初期状態で表示
+  });
 
-  // パスが変更されたときに状態をリセット
+  // パスが変更されたときにopacity状態をリセット
   useLayoutEffect(() => {
     // opacityの初期状態をstateで管理
     if (isHomePage) {
@@ -48,62 +38,16 @@ export default function Header() {
     }
   }, [pathname, isHomePage]);
 
-  // スクロール方向による表示・非表示制御
-  useEffect(() => {
-    // ページ遷移時はスクロール制御を一時的に無効化
-    let timeoutId: NodeJS.Timeout | null = null;
-
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      const currentTime = Date.now();
-      const timeSinceLastScroll =
-        currentTime - lastScrollTime.current;
-
-      // スクロールの差分を計算
-      const scrollDifference = currentScrollY - lastScrollY.current;
-
-      // スクロール方向を判定（バッファとタイムアウトを考慮）
-      if (
-        Math.abs(scrollDifference) > scrollBuffer &&
-        timeSinceLastScroll > scrollTimeout
-      ) {
-        if (scrollDifference > 0 && currentScrollY > scrollBuffer) {
-          // 下スクロール（かつ一定以上スクロールされている場合）
-          setIsVisible(false);
-        } else if (scrollDifference < 0) {
-          // 上スクロール
-          setIsVisible(true);
-        }
-        lastScrollY.current = currentScrollY;
-        lastScrollTime.current = currentTime;
-      }
-    };
-
-    // ページ遷移後少し遅らせてスクロールイベントを登録
-    timeoutId = setTimeout(() => {
-      window.addEventListener("scroll", handleScroll, {
-        passive: true,
-      });
-    }, 100);
-
-    return () => {
-      if (timeoutId) {
-        clearTimeout(timeoutId);
-      }
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [pathname]); // pathnameが変更されるたびにイベントリスナーを再登録
-
   // スクロール位置によるopacity制御（ホームページのみ）
   useEffect(() => {
     if (!isHomePage) return;
 
     const handleScrollOpacity = () => {
-      const scrollY = window.scrollY;
+      const currentScrollY = window.scrollY;
       const viewportHeight = window.innerHeight;
       const triggerPoint = viewportHeight * 0.8; // 80%の位置
 
-      if (scrollY > triggerPoint) {
+      if (currentScrollY > triggerPoint) {
         setIsOpaque(true);
       } else {
         setIsOpaque(false);
