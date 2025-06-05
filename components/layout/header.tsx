@@ -126,7 +126,7 @@ export default function Header() {
         className={cn(
           "fixed top-0 z-20 w-full pt-6 md:pt-8 md:block transition-all duration-300 ease-in-out",
           isVisible ? "translate-y-0" : "-translate-y-full",
-          isOpaque ? "opacity-100" : "opacity-0"
+          isOpaque ? "opacity-100" : "opacity-0 pointer-events-none"
         )}
       >
         <div className="container mx-auto flex flex-row items-center justify-between px-4">
@@ -134,20 +134,20 @@ export default function Header() {
             <span className="sr-only">
               Awaji Food Research Institute
             </span>
-            <Link href="/">
+            <Link href="/" className="hover:opacity-70 transition-opacity">
               <ThemeLogo className="w-[150px] md:w-[200px]" />
             </Link>
           </h1>
           <div className="flex flex-row items-center gap-8">
             <Link
               href="/contact"
-              className="hidden font-en border-1 rounded-full border-zinc-800 px-6 py-2 text-sm font-bold uppercase backdrop-blur-sm dark:border-zinc-100 md:block"
+              className="hidden font-en border-1 rounded-full border-zinc-800 px-6 py-2 text-sm font-bold uppercase backdrop-blur-sm dark:border-zinc-100 md:block hover:opacity-70 transition-opacity"
             >
               Contact
             </Link>
             <div
               onClick={toggleDrawer}
-              className="flex cursor-pointer flex-col items-center justify-center gap-0 text-current hover:bg-transparent"
+              className="flex cursor-pointer flex-col items-center justify-center gap-0 text-current hover:bg-transparent hover:opacity-70 transition-opacity"
               aria-label="メニューを開く"
             >
               <Menu strokeWidth={1} className="w-7 h-7 md:w-9 md:h-9" />
