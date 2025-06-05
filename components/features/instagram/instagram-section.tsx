@@ -16,7 +16,7 @@ export default function InstagramSection() {
           href={INSTAGRAM_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex w-fit items-center gap-[2px] mt-3"
+          className="flex w-fit items-center gap-[2px] mt-3 hover:opacity-70 transition-opacity"
         >
           <Instagram className="size-6" />
           <ArrowUpRight strokeWidth={1} className="size-6" />

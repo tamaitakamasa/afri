@@ -21,7 +21,7 @@ export default function HomeNoteSection() {
           href={NOTE_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex w-fit items-center gap-[2px] mt-3"
+          className="flex w-fit items-center gap-[2px] mt-3 hover:opacity-70 transition-opacity"
         >
           <Image src={noteIcon} alt="note" />
           <ArrowUpRight strokeWidth={1} className="size-6" />
