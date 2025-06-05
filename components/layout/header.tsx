@@ -7,12 +7,13 @@ import Link from "next/link";
 import { Menu } from "lucide-react";
 import NavDrawer from "../common/drawer";
 import { cn } from "../../lib/utils";
+import { ThemeToggleButton } from "../ui/theme-toggle-button";
+import { ContactButton } from "../ui/contact-button";
 
 export default function Header() {
   const pathname = usePathname();
   const isHomePage = pathname === "/";
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-
   // ページ遷移時に確実にリセットされるように初期化
   const [isVisible, setIsVisible] = useState(true);
   // opacity制御用のstate（Tailwindクラス用）
@@ -40,10 +41,10 @@ export default function Header() {
     // opacityの初期状態をstateで管理
     if (isHomePage) {
       setIsOpaque(false);
-      console.log('🏠 Home page: opacity state set to false');
+      console.log("🏠 Home page: opacity state set to false");
     } else {
       setIsOpaque(true);
-      console.log('📄 Other page: opacity state set to true');
+      console.log("📄 Other page: opacity state set to true");
     }
   }, [pathname, isHomePage]);
 
@@ -55,13 +56,17 @@ export default function Header() {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       const currentTime = Date.now();
-      const timeSinceLastScroll = currentTime - lastScrollTime.current;
+      const timeSinceLastScroll =
+        currentTime - lastScrollTime.current;
 
       // スクロールの差分を計算
       const scrollDifference = currentScrollY - lastScrollY.current;
 
       // スクロール方向を判定（バッファとタイムアウトを考慮）
-      if (Math.abs(scrollDifference) > scrollBuffer && timeSinceLastScroll > scrollTimeout) {
+      if (
+        Math.abs(scrollDifference) > scrollBuffer &&
+        timeSinceLastScroll > scrollTimeout
+      ) {
         if (scrollDifference > 0 && currentScrollY > scrollBuffer) {
           // 下スクロール（かつ一定以上スクロールされている場合）
           setIsVisible(false);
@@ -108,7 +113,9 @@ export default function Header() {
     // 初期状態を設定
     handleScrollOpacity();
 
-    window.addEventListener("scroll", handleScrollOpacity, { passive: true });
+    window.addEventListener("scroll", handleScrollOpacity, {
+      passive: true,
+    });
 
     return () => {
       window.removeEventListener("scroll", handleScrollOpacity);
@@ -124,9 +131,9 @@ export default function Header() {
       <header
         ref={headerRef}
         className={cn(
-          "fixed top-0 z-20 w-full pt-6 md:pt-8 md:block transition-all duration-300 ease-in-out",
+          "fixed top-0 z-20 w-full pt-6 transition-all duration-300 ease-in-out md:block md:pt-8",
           isVisible ? "translate-y-0" : "-translate-y-full",
-          isOpaque ? "opacity-100" : "opacity-0 pointer-events-none"
+          isOpaque ? "opacity-100" : "pointer-events-none opacity-0",
         )}
       >
         <div className="container mx-auto flex flex-row items-center justify-between px-4">
@@ -134,24 +141,31 @@ export default function Header() {
             <span className="sr-only">
               Awaji Food Research Institute
             </span>
-            <Link href="/" className="hover:opacity-70 transition-opacity">
+            <Link
+              href="/"
+              className="transition-opacity hover:opacity-70"
+            >
               <ThemeLogo className="w-[150px] md:w-[200px]" />
             </Link>
           </h1>
-          <div className="flex flex-row items-center gap-8">
+          <div className="flex flex-row items-center gap-6">
             <Link
               href="/contact"
-              className="hidden font-en border-1 rounded-full border-zinc-800 px-6 py-2 text-sm font-bold uppercase backdrop-blur-sm dark:border-zinc-100 md:block hover:opacity-70 transition-opacity"
+              className="font-en border-1 hidden rounded-full border-zinc-800 px-6 py-2 text-sm font-bold uppercase backdrop-blur-sm transition-opacity hover:opacity-70 md:block dark:border-zinc-100"
             >
               Contact
             </Link>
+            <ThemeToggleButton className="hidden border border-zinc-800 backdrop-blur-sm dark:border-zinc-100 md:flex" />
             <div
               onClick={toggleDrawer}
-              className="flex cursor-pointer flex-col items-center justify-center gap-0 text-current hover:bg-transparent hover:opacity-70 transition-opacity"
+              className="flex cursor-pointer flex-col items-center justify-center gap-0 text-current transition-opacity hover:bg-transparent hover:opacity-70"
               aria-label="メニューを開く"
             >
-              <Menu strokeWidth={1} className="w-7 h-7 md:w-9 md:h-9" />
-              <span className="font-en text-[8px] md:text-[10px] font-bold uppercase">
+              <Menu
+                strokeWidth={1}
+                className="h-7 w-7 md:h-9 md:w-9"
+              />
+              <span className="font-en text-[8px] font-bold uppercase md:text-[10px]">
                 menu
               </span>
             </div>

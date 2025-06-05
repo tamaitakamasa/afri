@@ -18,7 +18,12 @@ export function PageLayout({
 }: PageLayoutProps) {
   return (
     <div className={cn("pt-40 pb-20 md:py-50", className)}>
-      <div className={cn("container mx-auto px-4 pb-20 md:pb-40 border-b", titleClassName)}>
+      <div
+        className={cn(
+          "container mx-auto px-4 pb-20 md:pb-40 border-b dark:border-white/40",
+          titleClassName,
+        )}
+      >
         <h1 className="font-en text-[28px] md:text-[50px] font-bold uppercase tracking-widest text-center">
           {title}
         </h1>

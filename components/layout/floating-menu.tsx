@@ -2,15 +2,12 @@
 
 "use client";
 
-// import React, { useState } from 'react';
-import { Button } from "../ui/button";
-import Link from "next/link";
-import { Mail, Sun, Moon } from "lucide-react";
-import { useTheme } from "next-themes";
 import { Separator } from "../ui/separator";
+import { ThemeToggleButton } from "../ui/theme-toggle-button";
+import { ContactButton } from "../ui/contact-button";
+
 
 export default function FloatingMenu() {
-  const { theme, setTheme } = useTheme();
 
   return (
     <>
@@ -19,26 +16,11 @@ export default function FloatingMenu() {
           orientation="vertical"
           className="bg-muted-foreground h-4"
         />
-        <Button
-          className="rounded-full text-xs font-semibold"
+        <ContactButton
+          className="text-xs font-semibold"
           variant="ghost"
-          asChild
-        >
-          <Link href={`/contact`}>
-            <Mail />
-          </Link>
-        </Button>
-        {/* <Separator orientation="vertical" className="h-4 bg-muted-foreground" /> */}
-        <Button
-          variant="ghost"
-          size="icon"
-          onClick={() =>
-            setTheme(theme === "dark" ? "light" : "dark")
-          }
-          className="rounded-full text-xs"
-        >
-          {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
-        </Button>
+        />
+        <ThemeToggleButton className="rounded-full text-xs" />
         <Separator
           orientation="vertical"
           className="bg-muted-foreground h-4"

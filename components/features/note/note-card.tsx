@@ -10,7 +10,7 @@ interface NoteCardProps {
 
 export function NoteCard({ post }: NoteCardProps) {
   return (
-    <div className="md:border-r md:border-gray-200">
+    <div className="md:border-r md:border-gray-200 dark:md:border-white/40">
       <figure className="relative aspect-[460/345] overflow-hidden">
         <Link
           href={post.noteUrl}
