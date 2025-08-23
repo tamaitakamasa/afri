@@ -13,7 +13,7 @@ export const NAVI_ITEMS = [
 	{ label: "Concept", href: "/#concept" },
 	{ label: "Team", href: "/#team" },
 	{ label: "Column", href: "/column" },
-	{ label: "Academy", href: "/" },
+	{ label: "Academy", href: "/#academy" },
 	{ label: "Join Us", href: "/#join" },
 	{ label: "Contact", href: "/contact" },
 ];
