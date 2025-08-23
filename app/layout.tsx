@@ -10,6 +10,7 @@ import { ThemeProvider } from "next-themes";
 import GlobalLoadingIndicator from "@/components/common/global-loading-indicator";
 import RouterTransitionProvider from "@/components/common/router-transition-provider";
 import { cn } from "@/lib/utils";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 const notoSansJP = Noto_Sans_JP({
   variable: "--font-noto-sans-jp",
@@ -67,6 +68,7 @@ export default function RootLayout({
           `${notoSansJP.variable} ${urbanist.variable} antialiased`,
         )}
       >
+				<GoogleAnalytics gaId="G-82RWGM5888" />
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
