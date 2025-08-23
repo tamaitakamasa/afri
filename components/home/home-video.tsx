@@ -1,63 +1,14 @@
 "use client";
 
 import { useRef, useState } from "react";
-// import mainVisual from "@/public/images/mv.webp";
 import logo from "@/public/images/logo.svg";
-import logoLight from "@/public/images/logo_light.svg";
 import Image from "next/image";
-// import { motion, useScroll, useTransform } from "motion/react";
 import { StreamPlayerOfficial } from "../features/video/stream-player-official";
 import { cn } from "@/lib/utils";
 
 export default function HomeVideo() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
-
-  // const { scrollYProgress } = useScroll({
-  //   target: containerRef,
-  //   offset: ["start start", "end start"],
-  // });
-
-  // // 背景画像のパララックス効果
-  // const backgroundY = useTransform(
-  //   scrollYProgress,
-  //   [0, 1],
-  //   // ["-20dvh", "20dvh"],
-  //   ["0", "0"],
-  // );
-
-  // // ロゴのトランスフォーメーション
-  // const logoWidth = useTransform(
-  //   scrollYProgress,
-  //   [0, 0.75], // 80%のスクロールで変形完了
-  //   ["500px", "200px"],
-  // );
-
-  // // ロゴの垂直位置（上からの距離）- 中央から下部へ
-  // const logoBottom = useTransform(
-  //   scrollYProgress,
-  //   [0, 0.75],
-  //   ["50%", "10%"],
-  // );
-
-  // // ロゴの垂直方向の変形基準点を調整
-  // const logoTransformY = useTransform(
-  //   scrollYProgress,
-  //   [0, 0.75],
-  //   ["50%", "0%"],
-  // );
-
-  // // ロゴの不透明度 - 変形完了後にフェードアウト
-  // const logoOpacity = useTransform(
-  //   scrollYProgress,
-  //   [0, 0.8, 0.85], // 0-80%は表示、80%-でフェードアウト
-  //   [1, 1, 0],
-  // );
-
-  // // 画像がロードされたことを追跡
-  // // const handleImageLoad = () => {
-  // //   setImageLoaded(true);
-  // // };
 
   return (
     <div
@@ -98,7 +49,6 @@ export default function HomeVideo() {
             : "opacity-100",
         )}
       >
-        {/* <div className="h-10 w-10 animate-spin rounded-full border-b-2 border-t-2 border-white"></div> */}
         <div className="relative aspect-square w-[clamp(100px,20vw,200px)]">
           <Image
             src={logo}

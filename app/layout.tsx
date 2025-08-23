@@ -28,10 +28,6 @@ const notoSansJP = Noto_Sans_JP({
   ],
 });
 
-// const geistMono = Geist_Mono({
-//   variable: "--font-geist-mono",
-//   subsets: ["latin"],
-// });
 
 const urbanist = Urbanist({
   variable: "--font-urbanist",
