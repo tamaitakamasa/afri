@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 // import mainVisual from "@/public/images/mv.webp";
 import logo from "@/public/images/logo.svg";
+import logoLight from "@/public/images/logo_light.svg";
 import Image from "next/image";
 // import { motion, useScroll, useTransform } from "motion/react";
 import { StreamPlayerOfficial } from "../features/video/stream-player-official";
@@ -60,7 +61,7 @@ export default function HomeVideo() {
 
   return (
     <div
-      className="relative aspect-[16/9.55] h-auto w-full overflow-clip"
+      className="relative aspect-[16/9.55] h-auto w-full max-h-[100dvh] overflow-clip"
       ref={containerRef}
     >
       <StreamPlayerOfficial
@@ -91,13 +92,21 @@ export default function HomeVideo() {
       {/* ローディング */}
       <div
         className={cn(
-          "bg-primary fixed inset-0 z-20 flex items-center justify-center transition-opacity duration-500",
+          "bg-white fixed inset-0 z-20 flex items-center justify-center transition-opacity duration-1000",
           isVideoLoaded
             ? "pointer-events-none opacity-0"
             : "opacity-100",
         )}
       >
-        <div className="h-10 w-10 animate-spin rounded-full border-b-2 border-t-2 border-white"></div>
+        {/* <div className="h-10 w-10 animate-spin rounded-full border-b-2 border-t-2 border-white"></div> */}
+        <div className="relative aspect-square w-[clamp(100px,20vw,200px)]">
+          <Image
+            src={logo}
+            alt=""
+            fill
+            className="object-contain"
+          />
+        </div>
       </div>
     </div>
   );

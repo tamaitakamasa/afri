@@ -11,7 +11,7 @@ import HomeTeamsSection from "@/components/home/home-teams-section";
 import OfficeSection from "@/components/home/office-section";
 // import Hero from "@/components/home/hero";
 // import VideoPlayer from "@/components/features/video/video-player";
-import Sample from "@/components/sample/sample";
+// import Sample from "@/components/sample/sample";
 import InstagramSection from "@/components/features/instagram/instagram-section";
 
 export default function Home() {
