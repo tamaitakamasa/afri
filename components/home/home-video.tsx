@@ -49,7 +49,7 @@ export default function HomeVideo() {
             : "opacity-100",
         )}
       >
-        <div className="relative aspect-square w-[clamp(100px,20vw,200px)]">
+        <div className="relative aspect-square w-[clamp(200px,20vw,300px)]">
           <Image
             src={logo}
             alt=""
