@@ -16,15 +16,15 @@ const notoSansJP = Noto_Sans_JP({
   subsets: ["latin"],
   display: "swap",
   weight: [
-    "100",
-    "200",
-    "300",
-    "400",
-    "500",
-    "600",
-    "700",
-    "800",
-    "900",
+    // "100", // font-thin - 使用回数: 2回
+    // "200", // font-extralight - 使用回数: 2回
+    "300", // font-light - 使用回数: 2回
+    "400", // font-normal - 使用回数: 5回
+    "500", // font-medium - 使用回数: 28回
+    "600", // font-semibold - 使用回数: 12回
+    "700", // font-bold - 使用回数: 44回
+    "800", // font-extrabold - 使用回数: 2回
+    "900", // font-black - 使用回数: 21回
   ],
 });
 
@@ -38,15 +38,15 @@ const urbanist = Urbanist({
   subsets: ["latin"],
   display: "swap",
   weight: [
-    "100",
-    "200",
-    "300",
-    "400",
-    "500",
-    "600",
-    "700",
-    "800",
-    "900",
+    // "100", // font-thin - 使用回数: 2回
+    // "200", // font-extralight - 使用回数: 2回
+    "300", // font-light - 使用回数: 2回
+    "400", // font-normal - 使用回数: 5回
+    "500", // font-medium - 使用回数: 28回
+    "600", // font-semibold - 使用回数: 12回
+    "700", // font-bold - 使用回数: 44回
+    "800", // font-extrabold - 使用回数: 2回
+    "900", // font-black - 使用回数: 21回
   ],
 });
 
@@ -68,7 +68,7 @@ export default function RootLayout({
     >
       <body
         className={cn(
-          `${notoSansJP.variable} ${urbanist.variable} antialiased`
+          `${notoSansJP.variable} ${urbanist.variable} antialiased`,
         )}
       >
         <ThemeProvider

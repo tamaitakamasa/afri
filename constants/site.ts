@@ -7,7 +7,7 @@ export const SITE_TITLE = "Awaji Food Research Institute";
 export const SITE_DESCRIPTION = "淡路島（兵庫県）で、「食」をテーマに研究・活動。";
 export const NOTE_URL = "https://note.com/foodtrail";
 export const NOTE_API_BASE_URL = 'https://note.com/api/v2/creators/foodtrail/';
-export const INSTAGRAM_URL = "https://www.instagram.com/awaji_food_research_institude/";
+export const INSTAGRAM_URL = "https://www.instagram.com/awaji_food_research_institute/";
 export const NAVI_ITEMS = [
 	// { label: "Home", href: "/" },
 	{ label: "Concept", href: "/#concept" },
