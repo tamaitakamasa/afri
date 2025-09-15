@@ -13,8 +13,6 @@ interface NoteCardProps {
 
 export function NoteCard({ post }: NoteCardProps) {
   const category = getCategoryFromPost(post);
-	console.log(post);
-	console.log(category);
 
   return (
     <div className="md:border-r md:border-gray-200 dark:md:border-white/40">

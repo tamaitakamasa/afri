@@ -39,7 +39,7 @@ export default function AcademyJoinSection() {
           <p className="sm:mt-42 max-w-[400px] text-sm sm:mb-16 sm:text-base">
             食の研究やプロジェクトにご関心のある方、自治体・企業・団体様、ぜひご連絡ください。
           </p>
-          <PrimaryButton label="Contact" url="#" />
+          <PrimaryButton label="Contact" url="/contact" />
         </div>
       </div>
     </div>
