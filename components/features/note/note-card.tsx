@@ -5,7 +5,6 @@ import {
 import { NoteArticle } from "@/types/note";
 import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 
 interface NoteCardProps {
   post: NoteArticle;
@@ -16,13 +15,12 @@ export function NoteCard({ post }: NoteCardProps) {
 
   return (
     <div className="md:border-r md:border-gray-200 dark:md:border-white/40">
-      <figure className="relative aspect-[460/345] overflow-hidden">
-        <Link
-          href={post.noteUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="block"
-        >
+      <a
+        href={post.noteUrl}
+        target="_blank"
+        className="block"
+      >
+        <figure className="relative aspect-[460/345] overflow-hidden">
           <Image
             src={post.eyecatch}
             alt={post.name}
@@ -31,13 +29,14 @@ export function NoteCard({ post }: NoteCardProps) {
             style={{ objectFit: "cover" }}
             className="transition-transform duration-500 ease-out hover:scale-110"
           />
-        </Link>
-        <div className="absolute bottom-5 right-5 z-10">
-          <div className="rounded-full bg-zinc-700 px-4 py-1">
-            <ArrowUpRight color="white" strokeWidth={1.5} />
+
+          <div className="absolute bottom-5 right-5 z-10">
+            <div className="rounded-full bg-zinc-700 px-4 py-1">
+              <ArrowUpRight color="white" strokeWidth={1.5} />
+            </div>
           </div>
-        </div>
-      </figure>
+        </figure>
+      </a>
       <div className="flex flex-col gap-4 px-4 py-6 md:px-10 md:py-8">
         {category && (
           <span className="text-xs font-bold text-gray-400">
@@ -45,7 +44,7 @@ export function NoteCard({ post }: NoteCardProps) {
           </span>
         )}
         <h2 className="text-lg font-medium tracking-wider md:line-clamp-2 md:text-xl md:font-normal">
-          <a href={post.noteUrl} target="_blank">
+          <a href={post.noteUrl} target="_blank" className="hover:opacity-70 transition-opacity">
             {post.name}
           </a>
         </h2>
