@@ -24,7 +24,7 @@ export function NoteListWithFilter({
   // フィルタリングされた記事を取得
   const filteredPosts = selectedCategory
     ? posts.filter(post =>
-        post.hashtags.some(tag => tag.hashtag.name === selectedCategory)
+        post.hashtags.some(tag => tag.hashtag.name === `#${selectedCategory}`)
       )
     : posts;
 
