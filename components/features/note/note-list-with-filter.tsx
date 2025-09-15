@@ -19,12 +19,12 @@ export function NoteListWithFilter({
   limit,
   showFilter = true
 }: NoteListWithFilterProps) {
-  const [selectedTag, setSelectedTag] = useState<string | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
   // フィルタリングされた記事を取得
-  const filteredPosts = selectedTag
+  const filteredPosts = selectedCategory
     ? posts.filter(post =>
-        post.hashtags.some(tag => tag.hashtag.name === selectedTag)
+        post.hashtags.some(tag => tag.hashtag.name === selectedCategory)
       )
     : posts;
 
@@ -35,8 +35,8 @@ export function NoteListWithFilter({
     <div className={cn(className)}>
       {showFilter && (
         <NoteFilter
-          selectedTag={selectedTag}
-          onTagSelect={setSelectedTag}
+          selectedCategory={selectedCategory}
+          onCategorySelect={setSelectedCategory}
 					className="mb-10 md:mb-16"
         />
       )}
@@ -57,7 +57,7 @@ export function NoteListWithFilter({
         <div className="mt-8 text-center">
           <p className="text-sm text-gray-600">
             {limit}件 / 全{filteredPosts.length}件を表示
-            {selectedTag && ` (${selectedTag})`}
+            {selectedCategory && ` (${selectedCategory})`}
           </p>
         </div>
       )}

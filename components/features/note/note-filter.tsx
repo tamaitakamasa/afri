@@ -4,14 +4,14 @@ import { cn } from "@/lib/utils";
 import { NOTE_CATEGORIES } from "@/constants/site";
 
 interface NoteFilterProps {
-  selectedTag: string | null;
-  onTagSelect: (tag: string | null) => void;
+  selectedCategory: string | null;
+  onCategorySelect: (category: string | null) => void;
   className?: string;
 }
 
 export function NoteFilter({
-  selectedTag,
-  onTagSelect,
+  selectedCategory,
+  onCategorySelect,
   className,
 }: NoteFilterProps) {
   // 全ての記事からユニークなハッシュタグを抽出
@@ -35,16 +35,16 @@ export function NoteFilter({
     <div className={cn(className)}>
       <div className="flex flex-wrap gap-2">
         <button
-          onClick={() => onTagSelect(null)}
-          className={getButtonClassName(selectedTag === null)}
+          onClick={() => onCategorySelect(null)}
+          className={getButtonClassName(selectedCategory === null)}
         >
           すべて
         </button>
         {uniqueCategories.map((category) => (
           <button
             key={category}
-            onClick={() => onTagSelect(category)}
-            className={getButtonClassName(selectedTag === category)}
+            onClick={() => onCategorySelect(category)}
+            className={getButtonClassName(selectedCategory === category)}
           >
             {category}
           </button>
