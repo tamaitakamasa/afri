@@ -148,20 +148,17 @@ export const metadata: Metadata = {
   },
 
   // その他のメタデータ
-  // viewport: モバイル表示の最適化
-  // - width: ビューポートの幅
-  // - initialScale: 初期ズーム倍率
-  // - maximumScale: 最大ズーム倍率
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 1,
-  },
   // verification: 各種検証用の設定
   // - google: Google Search Console用の検証コード
   verification: {
     google: "G-82RWGM5888", // Google Search Console用
   },
+};
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
 };
 
 export default function RootLayout({
