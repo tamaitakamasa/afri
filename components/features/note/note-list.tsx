@@ -12,7 +12,7 @@ interface NoteListProps {
 export default async function NoteList({ className, limit }: NoteListProps) {
   const noteData = await getAllPosts();
   const posts: NoteArticle[] = noteData.data.contents;
-	console.log(posts);
+	// console.log(posts);
 
   // limitが指定されている場合は、その件数まで制限
   const displayPosts = limit ? posts.slice(0, limit) : posts;

@@ -1,6 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
+import { NOTE_CATEGORIES } from "@/constants/site";
 
 interface NoteFilterProps {
   selectedTag: string | null;
@@ -18,12 +19,7 @@ export function NoteFilter({
   //   post.hashtags.map(tag => tag.hashtag.name)
   // );
   // const uniqueTags = Array.from(new Set(allTags)).sort();
-  const uniqueTags = [
-    "活動レポート",
-    "プロジェクト紹介",
-    "Awaji Food Reseach Institute",
-    "食文化見聞録",
-  ];
+  const uniqueCategories = NOTE_CATEGORIES;
 
   // ボタンのスタイルを計算する関数
   const getButtonClassName = (isSelected: boolean) => {
@@ -44,13 +40,13 @@ export function NoteFilter({
         >
           すべて
         </button>
-        {uniqueTags.map((tag) => (
+        {uniqueCategories.map((category) => (
           <button
-            key={tag}
-            onClick={() => onTagSelect(tag)}
-            className={getButtonClassName(selectedTag === tag)}
+            key={category}
+            onClick={() => onTagSelect(category)}
+            className={getButtonClassName(selectedTag === category)}
           >
-            {tag}
+            {category}
           </button>
         ))}
       </div>

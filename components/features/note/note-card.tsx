@@ -1,4 +1,7 @@
-import { formatDateToYYYYMMDD } from "@/lib/utils";
+import {
+  formatDateToYYYYMMDD,
+  getCategoryFromPost,
+} from "@/lib/utils";
 import { NoteArticle } from "@/types/note";
 import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
@@ -9,6 +12,10 @@ interface NoteCardProps {
 }
 
 export function NoteCard({ post }: NoteCardProps) {
+  const category = getCategoryFromPost(post);
+	console.log(post);
+	console.log(category);
+
   return (
     <div className="md:border-r md:border-gray-200 dark:md:border-white/40">
       <figure className="relative aspect-[460/345] overflow-hidden">
@@ -33,16 +40,18 @@ export function NoteCard({ post }: NoteCardProps) {
           </div>
         </div>
       </figure>
-      <div className="flex flex-col gap-4 px-4 md:px-10 py-6 md:py-8">
-        <span className="text-xs font-bold text-gray-400">
-          カテゴリー
-        </span>
-        <h2 className="md:line-clamp-2 text-lg md:text-xl font-medium md:font-normal tracking-wider">
+      <div className="flex flex-col gap-4 px-4 py-6 md:px-10 md:py-8">
+        {category && (
+          <span className="text-xs font-bold text-gray-400">
+            {category}
+          </span>
+        )}
+        <h2 className="text-lg font-medium tracking-wider md:line-clamp-2 md:text-xl md:font-normal">
           <a href={post.noteUrl} target="_blank">
             {post.name}
           </a>
         </h2>
-        <div className="mt-4 md:mt-5 flex flex-wrap gap-1.5">
+        <div className="mt-4 flex flex-wrap gap-1.5 md:mt-5">
           {post.hashtags.map((tag, index) => (
             <span key={index} className="text-xs tracking-wider">
               {tag.hashtag.name}

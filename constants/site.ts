@@ -17,3 +17,10 @@ export const NAVI_ITEMS = [
 	{ label: "Join Us", href: "/#join" },
 	{ label: "Contact", href: "/contact" },
 ];
+
+export const NOTE_CATEGORIES = [
+	"活動レポート",
+	"プロジェクト/メンバー紹介",
+	"お知らせ",
+	"食文化見聞録",
+] as const;

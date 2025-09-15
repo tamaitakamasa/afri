@@ -1,6 +1,8 @@
 // lib/utils.ts
 import { clsx, type ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"
+import { NOTE_CATEGORIES } from "@/constants/site"
+import { NoteArticle } from "@/types/note"
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
@@ -39,4 +41,21 @@ export function formatDateToYYYYMMDD(dateString: string) {
   const day = String(date.getDate()).padStart(2, '0');
 
   return `${year}.${month}.${day}`;
+}
+
+/**
+ * ノートのハッシュタグからカテゴリーを抽出する
+ * @param post ノート記事
+ * @returns カテゴリー名（見つからない場合はnull）
+ */
+export function getCategoryFromPost(post: NoteArticle): string | null {
+  for (const hashtag of post.hashtags) {
+    const hashtagName = hashtag.hashtag.name;
+    // #を除去してチェック
+    const nameWithoutHash = hashtagName.startsWith('#') ? hashtagName.slice(1) : hashtagName;
+    if ((NOTE_CATEGORIES as readonly string[]).includes(nameWithoutHash)) {
+      return nameWithoutHash;
+    }
+  }
+  return null;
 }
