@@ -76,7 +76,9 @@ export default function Header() {
         ref={headerRef}
         className={cn(
           "fixed top-0 z-20 w-full pt-6 transition-all duration-300 ease-in-out md:block md:pt-8",
-          isVisible ? "translate-y-0" : "-translate-y-full",
+          // TODO: スクロール連動の表示切替を検討中。戻す場合は下記コメントアウトを入れ替える
+          // isVisible ? "translate-y-0" : "-translate-y-full",
+          "translate-y-0",
           isOpaque ? "opacity-100" : "pointer-events-none opacity-0",
         )}
       >
