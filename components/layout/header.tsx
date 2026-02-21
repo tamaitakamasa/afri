@@ -8,7 +8,8 @@ import { Menu } from "lucide-react";
 import NavDrawer from "../common/drawer";
 import { cn } from "../../lib/utils";
 import { ThemeToggleButton } from "../ui/theme-toggle-button";
-import { useScrollDirection } from "../../hooks/use-scroll-direction";
+// TODO: スクロール連動の表示切替を検討中。戻す場合は下記コメントアウトを解除
+// import { useScrollDirection } from "../../hooks/use-scroll-direction";
 
 export default function Header() {
   const pathname = usePathname();
@@ -19,12 +20,12 @@ export default function Header() {
 
   const headerRef = useRef<HTMLElement>(null);
 
-  // カスタムフックでスクロール方向検知
-  const { isVisible } = useScrollDirection({
-    scrollBuffer: 100,
-    scrollTimeout: 150,
-    initialVisible: true, // headerは初期状態で表示
-  });
+  // TODO: スクロール連動の表示切替を検討中。戻す場合は下記コメントアウトを解除
+  // const { isVisible } = useScrollDirection({
+  //   scrollBuffer: 100,
+  //   scrollTimeout: 150,
+  //   initialVisible: true,
+  // });
 
   // パスが変更されたときにopacity状態をリセット
   useLayoutEffect(() => {
