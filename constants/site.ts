@@ -20,7 +20,7 @@ export const NAVI_ITEMS = [
 
 export const NOTE_CATEGORIES = [
 	"活動レポート",
-	"プロジェクト/メンバー紹介",
+	"プロジェクトメンバー紹介",
 	"お知らせ",
 	"食文化見聞録",
 ] as const;
